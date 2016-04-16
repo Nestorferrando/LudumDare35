@@ -41,6 +41,7 @@ public class FaceRendererScript : MonoBehaviour {
     {
         removeChildren();
 
+
         Sprite sprite = Resources.Load("face"+ face.Contour.Id, typeof(Sprite)) as Sprite;
         GameObject obj = new GameObject();
         obj.transform.position = new Vector3(transform.position.x, transform.position.y, -0.25f);
@@ -48,6 +49,9 @@ public class FaceRendererScript : MonoBehaviour {
         rend.sprite = sprite;
         rend.color = ColorUtils.getSkinColor(face.SkinColor);
         obj.transform.parent = gameObject.transform;
+
+        float height = sprite.bounds.size.y;
+        float width = sprite.bounds.size.x;
 
         sprite = Resources.Load("face" + face.Contour.Id+"_back", typeof(Sprite)) as Sprite;
         obj = new GameObject();
@@ -76,27 +80,27 @@ public class FaceRendererScript : MonoBehaviour {
         obj = new GameObject();
         rend = obj.AddComponent(typeof(SpriteRenderer)) as SpriteRenderer;
         rend.sprite = sprite;
-        obj.transform.position = new Vector3(transform.position.x+face.LeftEye.OffsetX, transform.position.y + face.LeftEye.OffsetY, -0.3f);
+        obj.transform.position = new Vector3(transform.position.x+face.LeftEye.OffsetX / width, transform.position.y + face.LeftEye.OffsetY / height, -0.3f);
         obj.transform.parent = gameObject.transform;
 
         sprite = Resources.Load("right_eye" + face.RightEye.Id, typeof(Sprite)) as Sprite;
         obj = new GameObject();
         rend = obj.AddComponent(typeof(SpriteRenderer)) as SpriteRenderer;
         rend.sprite = sprite;
-        obj.transform.position = new Vector3(transform.position.x + face.RightEye.OffsetX, transform.position.y + face.RightEye.OffsetY, -0.3f);
+        obj.transform.position = new Vector3(transform.position.x + face.RightEye.OffsetX / width, transform.position.y + face.RightEye.OffsetY / height, -0.3f);
         obj.transform.parent = gameObject.transform;
 
         sprite = Resources.Load("mouth" + face.Mouth.Id, typeof(Sprite)) as Sprite;
         obj = new GameObject();
         rend = obj.AddComponent(typeof(SpriteRenderer)) as SpriteRenderer;
-        obj.transform.position = new Vector3(transform.position.x + face.Mouth.OffsetX, transform.position.y + face.Mouth.OffsetY, -0.4f);
+        obj.transform.position = new Vector3(transform.position.x + face.Mouth.OffsetX / width, transform.position.y + face.Mouth.OffsetY / height, -0.4f);
         rend.sprite = sprite;
         obj.transform.parent = gameObject.transform;
 
         sprite = Resources.Load("nose" + face.Nose.Id, typeof(Sprite)) as Sprite;
         obj = new GameObject();
         rend = obj.AddComponent(typeof(SpriteRenderer)) as SpriteRenderer;
-        obj.transform.position = new Vector3(transform.position.x + face.Nose.OffsetX, transform.position.y + face.Nose.OffsetY, -0.4f);
+        obj.transform.position = new Vector3(transform.position.x + face.Nose.OffsetX / width, transform.position.y + face.Nose.OffsetY / height, -0.4f);
         rend.sprite = sprite;
         obj.transform.parent = gameObject.transform;
 

@@ -9,11 +9,11 @@ public class FacePart
 
     private PartType type;
     private int ID;
-    private int offsetX;
-    private int offsetY;
+    private float offsetX;
+    private float offsetY;
 
 
-    public FacePart(PartType type, int id, int offsetX, int offsetY)
+    public FacePart(PartType type, int id, float offsetX, float offsetY)
     {
         this.type = type;
         ID = id;
@@ -21,12 +21,12 @@ public class FacePart
         this.offsetY = offsetY;
     }
 
-    public int OffsetX
+    public float OffsetX
     {
         get { return offsetX; }
     }
 
-    public int OffsetY
+    public float OffsetY
     {
         get { return offsetY; }
     }
