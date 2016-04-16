@@ -76,20 +76,27 @@ public class FaceRendererScript : MonoBehaviour {
         obj = new GameObject();
         rend = obj.AddComponent(typeof(SpriteRenderer)) as SpriteRenderer;
         rend.sprite = sprite;
-        obj.transform.position = new Vector3(transform.position.x, transform.position.y, -0.3f);
+        obj.transform.position = new Vector3(transform.position.x+face.LeftEye.OffsetX, transform.position.y + face.LeftEye.OffsetY, -0.3f);
         obj.transform.parent = gameObject.transform;
 
         sprite = Resources.Load("right_eye" + face.RightEye.Id, typeof(Sprite)) as Sprite;
         obj = new GameObject();
         rend = obj.AddComponent(typeof(SpriteRenderer)) as SpriteRenderer;
         rend.sprite = sprite;
-        obj.transform.position = new Vector3(transform.position.x, transform.position.y, -0.3f);
+        obj.transform.position = new Vector3(transform.position.x + face.RightEye.OffsetX, transform.position.y + face.RightEye.OffsetY, -0.3f);
         obj.transform.parent = gameObject.transform;
 
         sprite = Resources.Load("mouth" + face.Mouth.Id, typeof(Sprite)) as Sprite;
         obj = new GameObject();
         rend = obj.AddComponent(typeof(SpriteRenderer)) as SpriteRenderer;
-        obj.transform.position = new Vector3(transform.position.x, transform.position.y, -0.4f);
+        obj.transform.position = new Vector3(transform.position.x + face.Mouth.OffsetX, transform.position.y + face.Mouth.OffsetY, -0.4f);
+        rend.sprite = sprite;
+        obj.transform.parent = gameObject.transform;
+
+        sprite = Resources.Load("nose" + face.Nose.Id, typeof(Sprite)) as Sprite;
+        obj = new GameObject();
+        rend = obj.AddComponent(typeof(SpriteRenderer)) as SpriteRenderer;
+        obj.transform.position = new Vector3(transform.position.x + face.Nose.OffsetX, transform.position.y + face.Nose.OffsetY, -0.4f);
         rend.sprite = sprite;
         obj.transform.parent = gameObject.transform;
 
