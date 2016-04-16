@@ -17,7 +17,7 @@ using System.Text;
               getFaceDisplacementError(idealFace, realFace), 
               getMostDisplacedPart(idealFace, realFace),
               getFaceShapeError(idealFace, realFace),
-              getPartWithWorstShape(idealFace, realFace);
+              getPartWithWorstShape(idealFace, realFace));
       }
 
       private static PartType getMostDisplacedPart(Face idealFace, Face realFace)
