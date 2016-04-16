@@ -39,7 +39,7 @@ public class FaceRendererScript : MonoBehaviour {
 
     {
 
-       // removeChildren();
+        removeChildren();
 
 
         Sprite sprite = Resources.Load("face"+ face.Contour.Id, typeof(Sprite)) as Sprite;
