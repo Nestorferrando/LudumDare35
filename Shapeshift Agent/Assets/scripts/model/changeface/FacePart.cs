@@ -2,27 +2,23 @@
 using System.Collections;
 
 
-public enum PartType { CONTOUR,NOSE,MOUTH,HAIR,LEFT_EYE,RIGHT_EYE };
+public enum PartType { CONTOUR,NOSE,MOUTH,HAIR,LEFT_EYE,RIGHT_EYE,SKIN };
 
 public class FacePart
 {
 
-    private PartType ID;
+    private PartType type;
+    private int ID;
     private int offsetX;
     private int offsetY;
 
 
-    public FacePart(PartType id, int offsetX, int offsetY)
+    public FacePart(PartType type, int id, int offsetX, int offsetY)
     {
+        this.type = type;
         ID = id;
         this.offsetX = offsetX;
         this.offsetY = offsetY;
-    }
-
-
-    public PartType Id
-    {
-        get { return ID; }
     }
 
     public int OffsetX
@@ -33,5 +29,15 @@ public class FacePart
     public int OffsetY
     {
         get { return offsetY; }
+    }
+
+    public PartType Type
+    {
+        get { return type; }
+    }
+
+    public int Id
+    {
+        get { return ID; }
     }
 }
