@@ -43,17 +43,32 @@ public class FaceRendererScript : MonoBehaviour {
 
         Sprite sprite = Resources.Load("face"+ face.Contour.Id, typeof(Sprite)) as Sprite;
         GameObject obj = new GameObject();
-        obj.transform.position = new Vector3(transform.position.x, transform.position.y, -0.1f);
-
+        obj.transform.position = new Vector3(transform.position.x, transform.position.y, -0.25f);
         SpriteRenderer rend = obj.AddComponent(typeof(SpriteRenderer)) as SpriteRenderer;
+        rend.sprite = sprite;
+        rend.color = ColorUtils.getSkinColor(face.SkinColor);
+        obj.transform.parent = gameObject.transform;
+
+        sprite = Resources.Load("face" + face.Contour.Id+"_back", typeof(Sprite)) as Sprite;
+        obj = new GameObject();
+        obj.transform.position = new Vector3(transform.position.x, transform.position.y, -0.1f);
+        rend = obj.AddComponent(typeof(SpriteRenderer)) as SpriteRenderer;
+        rend.sprite = sprite;
+        rend.color = ColorUtils.getSkinColor(face.SkinColor);
+        obj.transform.parent = gameObject.transform;
+
+        sprite = Resources.Load("clothes", typeof(Sprite)) as Sprite;
+        obj = new GameObject();
+        obj.transform.position = new Vector3(transform.position.x, transform.position.y, -0.09f);
+        rend = obj.AddComponent(typeof(SpriteRenderer)) as SpriteRenderer;
         rend.sprite = sprite;
         obj.transform.parent = gameObject.transform;
 
         sprite = Resources.Load("hair" + face.Hair.Id, typeof(Sprite)) as Sprite;
         obj = new GameObject();
         rend = obj.AddComponent(typeof(SpriteRenderer)) as SpriteRenderer;
-        rend.color = ColorUtils.getHairColor(face.HairColor);
         rend.sprite = sprite;
+        rend.color = ColorUtils.getHairColor(face.HairColor);
         obj.transform.position = new Vector3(transform.position.x, transform.position.y, -0.2f);
         obj.transform.parent = gameObject.transform;
 
