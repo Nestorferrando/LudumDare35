@@ -6,12 +6,7 @@ public class FaceRendererScript : MonoBehaviour {
 
 
 
-    /*
-    void OnMouseUp()
-    {
-        Debug.Log("mouse up lalala");
-    }
-    */
+
 
     private SingletonData data;
     private Face PreviousFace;
