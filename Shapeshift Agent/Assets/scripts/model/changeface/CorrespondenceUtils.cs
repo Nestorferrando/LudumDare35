@@ -7,7 +7,7 @@ using System.Text;
 
   public class CorrespondenceUtils
   {
-      private static float ERROR_PER_PIXEL = 1/32.0f;
+      private static float ERROR_PER_PIXEL = 1/6.0f;
 
 
       public static CorrespondenceError GetFaceError(Face idealFace, Face realFace)

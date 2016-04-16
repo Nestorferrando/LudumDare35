@@ -25,15 +25,19 @@ public class FaceRendererScript : MonoBehaviour {
 
     private Face PreviousFace;
 
+    private int cont = 0;
+
     // Update is called once per frame
     void Update()
     {
+
         if (PreviousFace != data.CurrrentFace)
         {
             PreviousFace = data.CurrrentFace;
 
             renderFace(data.CurrrentFace);
         }
+
     }
 
     private void renderFace(Face face)
