@@ -6,13 +6,37 @@ public class FaceRendererScript : MonoBehaviour {
 
 
 
-
+    /*
     void OnMouseUp()
     {
         Debug.Log("mouse up lalala");
     }
+    */
 
-    public void renderFace(Face face)
+    private SingletonData data;
+
+    void Start()
+    {
+     
+        data = GameObject.Find("SingletonData").GetComponent<SingletonData>();
+
+
+    }
+
+    private Face PreviousFace;
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (PreviousFace != data.CurrrentFace)
+        {
+            PreviousFace = data.CurrrentFace;
+
+            renderFace(data.CurrrentFace);
+        }
+    }
+
+    private void renderFace(Face face)
 
     {
         removeChildren();

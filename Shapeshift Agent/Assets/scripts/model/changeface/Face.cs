@@ -67,5 +67,42 @@ public class Face
     {
         get { return skinColor; }
     }
+
+
+    public Face updateNose(FacePart nose)
+    {
+        return new Face(leftEye,rightEye,nose,mouth,contour,hair,hairColor,skinColor);
+    }
+
+    public Face updateMouth(FacePart mouth)
+    {
+        return new Face(leftEye, rightEye, nose, mouth, contour, hair, hairColor, skinColor);
+    }
+
+    public Face updateHair(FacePart hair)
+    {
+        return new Face(leftEye, rightEye, nose, mouth, contour, hair, hairColor, skinColor);
+    }
+
+    public Face updateLeftEye(FacePart leftEye)
+    {
+        return new Face(leftEye, rightEye, nose, mouth, contour, hair, hairColor, skinColor);
+    }
+
+    public Face updateRightEye(FacePart rightEye)
+    {
+        return new Face(leftEye, rightEye, nose, mouth, contour, hair, hairColor, skinColor);
+    }
+
+    public Face updateHairColor(HairColor hairColor)
+    {
+        return new Face(leftEye, rightEye, nose, mouth, contour, hair, hairColor, skinColor);
+    }
+
+    public Face updateSkinColor(SkinColor skinColor)
+    {
+        return new Face(leftEye, rightEye, nose, mouth, contour, hair, hairColor, skinColor);
+    }
+
 }
 
