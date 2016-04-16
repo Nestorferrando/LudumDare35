@@ -14,6 +14,9 @@ public class FaceRendererScript : MonoBehaviour {
     */
 
     private SingletonData data;
+    private Face PreviousFace;
+    public float scale = 0.5f;
+
 
     void Start()
     {
@@ -23,9 +26,8 @@ public class FaceRendererScript : MonoBehaviour {
 
     }
 
-    private Face PreviousFace;
 
-    private int cont = 0;
+
 
     // Update is called once per frame
     void Update()
@@ -43,12 +45,14 @@ public class FaceRendererScript : MonoBehaviour {
     private void renderFace(Face face)
 
     {
+
         removeChildren();
 
 
         Sprite sprite = Resources.Load("face"+ face.Contour.Id, typeof(Sprite)) as Sprite;
         GameObject obj = new GameObject();
         obj.transform.position = new Vector3(transform.position.x, transform.position.y, -0.25f);
+        obj.transform.localScale = new Vector3(scale, scale, 1);
         SpriteRenderer rend = obj.AddComponent(typeof(SpriteRenderer)) as SpriteRenderer;
         rend.sprite = sprite;
         rend.color = ColorUtils.getSkinColor(face.SkinColor);
@@ -60,6 +64,7 @@ public class FaceRendererScript : MonoBehaviour {
         sprite = Resources.Load("face" + face.Contour.Id+"_back", typeof(Sprite)) as Sprite;
         obj = new GameObject();
         obj.transform.position = new Vector3(transform.position.x, transform.position.y, -0.1f);
+        obj.transform.localScale = new Vector3(scale, scale, 1);
         rend = obj.AddComponent(typeof(SpriteRenderer)) as SpriteRenderer;
         rend.sprite = sprite;
         rend.color = ColorUtils.getSkinColor(face.SkinColor);
@@ -68,6 +73,7 @@ public class FaceRendererScript : MonoBehaviour {
         sprite = Resources.Load("clothes", typeof(Sprite)) as Sprite;
         obj = new GameObject();
         obj.transform.position = new Vector3(transform.position.x, transform.position.y, -0.09f);
+        obj.transform.localScale = new Vector3(scale, scale, 1);
         rend = obj.AddComponent(typeof(SpriteRenderer)) as SpriteRenderer;
         rend.sprite = sprite;
         obj.transform.parent = gameObject.transform;
@@ -78,33 +84,38 @@ public class FaceRendererScript : MonoBehaviour {
         rend.sprite = sprite;
         rend.color = ColorUtils.getHairColor(face.HairColor);
         obj.transform.position = new Vector3(transform.position.x, transform.position.y, -0.2f);
+        obj.transform.localScale = new Vector3(scale, scale, 1);
         obj.transform.parent = gameObject.transform;
 
         sprite = Resources.Load("left_eye" + face.LeftEye.Id, typeof(Sprite)) as Sprite;
         obj = new GameObject();
         rend = obj.AddComponent(typeof(SpriteRenderer)) as SpriteRenderer;
         rend.sprite = sprite;
-        obj.transform.position = new Vector3(transform.position.x+face.LeftEye.OffsetX / width, transform.position.y + face.LeftEye.OffsetY / height, -0.3f);
+        obj.transform.position = new Vector3(transform.position.x+face.LeftEye.OffsetX*scale / width, transform.position.y + face.LeftEye.OffsetY * scale / height, -0.3f);
+        obj.transform.localScale = new Vector3(scale, scale, 1);
         obj.transform.parent = gameObject.transform;
 
         sprite = Resources.Load("right_eye" + face.RightEye.Id, typeof(Sprite)) as Sprite;
         obj = new GameObject();
         rend = obj.AddComponent(typeof(SpriteRenderer)) as SpriteRenderer;
         rend.sprite = sprite;
-        obj.transform.position = new Vector3(transform.position.x + face.RightEye.OffsetX / width, transform.position.y + face.RightEye.OffsetY / height, -0.3f);
+        obj.transform.position = new Vector3(transform.position.x + face.RightEye.OffsetX * scale / width, transform.position.y + face.RightEye.OffsetY * scale / height, -0.3f);
+        obj.transform.localScale = new Vector3(scale, scale, 1);
         obj.transform.parent = gameObject.transform;
 
         sprite = Resources.Load("mouth" + face.Mouth.Id, typeof(Sprite)) as Sprite;
         obj = new GameObject();
         rend = obj.AddComponent(typeof(SpriteRenderer)) as SpriteRenderer;
-        obj.transform.position = new Vector3(transform.position.x + face.Mouth.OffsetX / width, transform.position.y + face.Mouth.OffsetY / height, -0.4f);
+        obj.transform.position = new Vector3(transform.position.x + face.Mouth.OffsetX * scale / width, transform.position.y + face.Mouth.OffsetY * scale / height, -0.4f);
+        obj.transform.localScale = new Vector3(scale, scale, 1);
         rend.sprite = sprite;
         obj.transform.parent = gameObject.transform;
 
         sprite = Resources.Load("nose" + face.Nose.Id, typeof(Sprite)) as Sprite;
         obj = new GameObject();
         rend = obj.AddComponent(typeof(SpriteRenderer)) as SpriteRenderer;
-        obj.transform.position = new Vector3(transform.position.x + face.Nose.OffsetX / width, transform.position.y + face.Nose.OffsetY / height, -0.4f);
+        obj.transform.position = new Vector3(transform.position.x + face.Nose.OffsetX * scale / width, transform.position.y + face.Nose.OffsetY * scale / height, -0.4f);
+        obj.transform.localScale = new Vector3(scale, scale, 1);
         rend.sprite = sprite;
         obj.transform.parent = gameObject.transform;
 
