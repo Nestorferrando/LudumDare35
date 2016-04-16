@@ -8,10 +8,8 @@ using System.Text;
 public class CorrespondenceError
 {
     private float totalError;
-
     private float displacementError;
     private PartType worstDisplacedPart;
-
     private float shapeError;
     private PartType partWithWorstShape;
 
