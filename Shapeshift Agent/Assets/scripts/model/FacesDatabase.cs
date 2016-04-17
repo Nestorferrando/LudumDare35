@@ -15,7 +15,7 @@ using System.Text;
             new FacePart(PartType.RIGHT_EYE, 5, 8.53f,7.02f),
             new FacePart(PartType.NOSE, 0, 0.08f, -5.05f),
             new FacePart(PartType.MOUTH, 0, 0.39f, -14.2f),
-            new FacePart(PartType.CONTOUR, 0, 0, 0),
+            new FacePart(PartType.CONTOUR, 1, 0, 0),
             new FacePart(PartType.HAIR, 0, 0, 0),
             HairColor.BROWN,
             SkinColor.BLACK
@@ -26,8 +26,8 @@ using System.Text;
             new FacePart(PartType.RIGHT_EYE, 2, 6.75f, 8.30f),
             new FacePart(PartType.NOSE, 1, 0.386f, -2.74f),
             new FacePart(PartType.MOUTH, 1, 1.38f, -15.54f),
-            new FacePart(PartType.CONTOUR, 1, 0, 0),
-            new FacePart(PartType.HAIR, 1, 0, 0),
+            new FacePart(PartType.CONTOUR, 0, 0, 0),
+            new FacePart(PartType.HAIR, 3, 0, 0),
             HairColor.BLONDE,
             SkinColor.WHITE
             );
@@ -35,7 +35,7 @@ using System.Text;
     public static Face Subject3 = new Face(
             new FacePart(PartType.LEFT_EYE, 1, -8.17f, 3.16f),
             new FacePart(PartType.RIGHT_EYE, 0, 9.144f, 5.22f),
-            new FacePart(PartType.NOSE, 2, 1.78f, -0.94f),
+            new FacePart(PartType.NOSE, 5, 1.78f, -0.94f),
             new FacePart(PartType.MOUTH, 2, 1.58f, -15.54f),
             new FacePart(PartType.CONTOUR, 2, 0, 0),
             new FacePart(PartType.HAIR, 2, 0, 0),
@@ -49,7 +49,7 @@ using System.Text;
         new FacePart(PartType.NOSE, 3, 1.382f, -3.51f),
         new FacePart(PartType.MOUTH, 3, 1.18f, -13.07f),
         new FacePart(PartType.CONTOUR, 3, 0, 0),
-        new FacePart(PartType.HAIR, 3, 0, 0),
+        new FacePart(PartType.HAIR, 1, 0, 0),
         HairColor.BLACK,
         SkinColor.BROWN
         );
@@ -60,13 +60,13 @@ using System.Text;
         new FacePart(PartType.RIGHT_EYE, 5, 8.54f, 3.16f),
         new FacePart(PartType.NOSE, 4, 1.382f, -3.51f),
         new FacePart(PartType.MOUTH, 4, 0.78f, -18.4f),
-        new FacePart(PartType.CONTOUR, 4, 0, 0),
+        new FacePart(PartType.CONTOUR, 5, 0, 0),
         new FacePart(PartType.HAIR, 4, 0, 0),
         HairColor.GINGER,
         SkinColor.WHITE
         );
 
 
-    public static Face SampleFace = Subject1;
+    public static Face SampleFace = Subject5;
     }
 
