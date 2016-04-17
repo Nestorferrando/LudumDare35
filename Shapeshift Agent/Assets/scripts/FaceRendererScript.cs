@@ -157,7 +157,7 @@ public class FaceRendererScript : MonoBehaviour
 
             sprite = Resources.Load("face" + face.Contour.Id + "_back", typeof (Sprite)) as Sprite;
             obj = new GameObject();
-            obj.transform.position = new Vector3(transform.position.x, transform.position.y, -0.1f);
+            obj.transform.position = new Vector3(transform.position.x, transform.position.y-0.004f, -0.1f);
             obj.transform.localScale = new Vector3(scale, scale, 1);
             rend = obj.AddComponent(typeof (SpriteRenderer)) as SpriteRenderer;
             rend.sprite = sprite;
