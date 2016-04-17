@@ -7,14 +7,25 @@ using System.Text;
    public class Target
    {
 
-       private TargetConfidence confidence;
+       private TargetConfidence _confidence= TargetConfidence.FIVE;
+
+       public Target(TargetConfidence confidence)
+       {
+           this._confidence = confidence;
+       }
 
        public TargetConfidence Confidence
        {
-           get { return confidence; }
-           set { confidence = value; }
+           get { return _confidence; }
        }
 
+
+       public Target decreaseConfidence()
+       {
+
+        TargetConfidence confidence = (TargetConfidence) (((int) _confidence) - 1);
+        return new Target(confidence);
+       }
 
    }
 

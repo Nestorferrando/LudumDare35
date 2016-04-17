@@ -23,17 +23,16 @@ public class DialogText : MonoBehaviour {
     private const int max_lines = 3;
     private Question currentQuestion;
     private IEnumerator run;
-
     private enum State { NONE, DRAWALL, NEXT, QUESTION }
     private State currentState = State.NEXT;
-
     private struct Question {
         public List<string> tags;
         public List<string> answers;
     };
-
     private List<Question> questions = new List<Question>();
     private int questionIndex = -1;
+    private GameObject dialogueCanvas;
+    private Button[] buttons;
 
     public void Awake() {
         sound = gameObject.GetComponent<AudioSource>();
@@ -41,6 +40,12 @@ public class DialogText : MonoBehaviour {
         currentQuestion.answers = new List<string>();
 
         defineMissionText("mission1");
+        /*
+        dialogueCanvas = GameObject.Find("DialogueCanvas");
+        buttons[0] = dialogueCanvas.transform.FindChild("Button0").GetComponent<Button>();
+        buttons[1] = dialogueCanvas.transform.FindChild("Button1").GetComponent<Button>();
+        buttons[2] = dialogueCanvas.transform.FindChild("Button2").GetComponent<Button>();
+        buttons[3] = dialogueCanvas.transform.FindChild("Button3").GetComponent<Button>();*/
     }
 
     public void defineMissionText(string fileName) {
@@ -261,6 +266,10 @@ public class DialogText : MonoBehaviour {
                 sound.Play();
         }
         //}
+    }
+
+    private void disableButtons() {
+        dialogueCanvas.SetActive(false);
     }
 
     public void DialogButton0Pressed() {

@@ -22,6 +22,7 @@ public class CloseReportLayer : MonoBehaviour
 
     {
         reportLayer.transform.localScale = new Vector3(0, 0, 0);
+        GetComponent<AudioSource>().Play();
     }
 
     // Update is called once per frame

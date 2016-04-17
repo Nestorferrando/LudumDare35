@@ -10,7 +10,7 @@ using System.Text;
 
 
 
-    public static Face Subject1 = new Face(
+    public static Face Subject2 = new Face(
             new FacePart(PartType.LEFT_EYE, 5, -8.6f, 5.46f),
             new FacePart(PartType.RIGHT_EYE, 5, 8.53f,7.02f),
             new FacePart(PartType.NOSE, 0, 0.08f, -5.05f),
@@ -21,7 +21,7 @@ using System.Text;
             SkinColor.BLACK
             );
 
-    public static Face Subject2 = new Face(
+    public static Face Subject1 = new Face(
             new FacePart(PartType.LEFT_EYE, 2, -7.77f, 7.77f),
             new FacePart(PartType.RIGHT_EYE, 2, 6.75f, 8.30f),
             new FacePart(PartType.NOSE, 1, 0.386f, -2.74f),
@@ -79,6 +79,6 @@ using System.Text;
         );
 
 
-    public static Face SampleFace = Protagonist;
+    public static Face SampleFace = Subject5;
     }
 
