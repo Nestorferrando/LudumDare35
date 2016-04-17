@@ -247,10 +247,5 @@ public class FaceRendererScript : MonoBehaviour
             if (previousFace != null) shitToBeRemoved.Add(new FacePartRemoval(currentNose, obj, false));
             currentNose = obj;
         }
-
-
-
     }
-
-
 }

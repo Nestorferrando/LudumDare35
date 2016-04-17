@@ -149,9 +149,9 @@ using System.Text;
           return part;
       }
 
-      private static float getFaceShapeError(Face idealFace, Face realFace)
+      private static int getFaceShapeError(Face idealFace, Face realFace)
       {
-          float totalSimilarityError = 0;
+        int totalSimilarityError = 0;
 
         totalSimilarityError += getCorrespondenceError(idealFace.Contour, realFace.Contour);
         totalSimilarityError += getCorrespondenceError(idealFace.Hair, realFace.Hair);
@@ -167,21 +167,17 @@ using System.Text;
 
 
 
-      private static float getCorrespondenceError(FacePart idealPart, FacePart chosenPart)
+      private static int getCorrespondenceError(FacePart idealPart, FacePart chosenPart)
 
       {
-
           int idealIndex = idealPart.Id;
           int realIndex = chosenPart.Id;
 
           if (Math.Abs(idealIndex - realIndex) == 0) return 0;
-           if (Math.Abs(idealIndex - realIndex) == 1) return 0.5f;
-        if (Math.Abs(idealIndex - realIndex) > 1) return 1;
-
           return 1;
       }
 
-    private static float getHairColorError(HairColor idealColor, HairColor chosenColor)
+    private static int getHairColorError(HairColor idealColor, HairColor chosenColor)
 
     {
 
@@ -189,12 +185,10 @@ using System.Text;
         int realIndex = (int) chosenColor;
 
         if (Math.Abs(idealIndex - realIndex) == 0) return 0;
-        if (Math.Abs(idealIndex - realIndex) == 1) return 0.5f;
-        if (Math.Abs(idealIndex - realIndex) > 1) return 1;
         return 1;
     }
 
-    private static float getSkinColorError(SkinColor idealColor, SkinColor chosenColor)
+    private static int getSkinColorError(SkinColor idealColor, SkinColor chosenColor)
 
     {
 
@@ -202,8 +196,6 @@ using System.Text;
         int realIndex = (int)chosenColor;
 
         if (Math.Abs(idealIndex - realIndex) == 0) return 0;
-        if (Math.Abs(idealIndex - realIndex) == 1) return 0.5f;
-        if (Math.Abs(idealIndex - realIndex) > 1) return 1;
         return 1;
     }
 }

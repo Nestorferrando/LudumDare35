@@ -10,16 +10,16 @@ public class CorrespondenceError
     private float totalError;
     private float displacementError;
     private PartType worstDisplacedPart;
-    private float shapeError;
+    private int badSelectedShapes;
     private PartType partWithWorstShape;
 
 
-    public CorrespondenceError(float totalError, float displacementError, PartType worstDisplacedPart, float shapeError, PartType partWithWorstShape)
+    public CorrespondenceError(float totalError, float displacementError, PartType worstDisplacedPart, int badSelectedShapes, PartType partWithWorstShape)
     {
         this.totalError = totalError;
         this.displacementError = displacementError;
         this.worstDisplacedPart = worstDisplacedPart;
-        this.shapeError = shapeError;
+        this.badSelectedShapes = badSelectedShapes;
         this.partWithWorstShape = partWithWorstShape;
     }
 
@@ -38,9 +38,9 @@ public class CorrespondenceError
         get { return worstDisplacedPart; }
     }
 
-    public float ShapeError
+    public float BadSelectedShapes
     {
-        get { return shapeError; }
+        get { return badSelectedShapes; }
     }
 
     public PartType PartWithWorstShape
