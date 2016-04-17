@@ -50,11 +50,14 @@ public class DraggeableFacePart : MonoBehaviour
 
 void OnMouseUp()
 {
-   
-       Destroy(obj);
-    obj = null;
 
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
+    if (obj != null)
+    {
+        Destroy(obj);
+        obj = null;
+    }
+
+    Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
 
     float differenceX =     bigFaceRenderer.transform.position.x - mousePos.x;
     float differenceY = bigFaceRenderer.transform.position.y - mousePos.y;
@@ -98,6 +101,12 @@ void OnMouseUp()
 
     void OnMouseDown()
     {
+
+        if (obj != null)
+        {
+            Destroy(obj);
+            obj = null;
+        }
         Sprite sprite = Resources.Load(geFileName(), typeof(Sprite)) as Sprite;
         obj = new GameObject();
         Vector3 mousePos=Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));

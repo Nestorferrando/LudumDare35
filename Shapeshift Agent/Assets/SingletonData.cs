@@ -5,7 +5,8 @@ public class SingletonData : MonoBehaviour
 {
 
     private Face _CurrrentFace;
-    private int currentSubjectNumber;
+    private int currentInfiltrationLevel;
+    private Target current;
 
 	// Use this for initialization
 	void Start ()
@@ -24,9 +25,9 @@ public class SingletonData : MonoBehaviour
         set { _CurrrentFace = value; }
     }
 
-    public int CurrentSubjectNumber
+    public int CurrentInfiltrationLevel
     {
-        get { return currentSubjectNumber; }
-        set { currentSubjectNumber = value; }
+        get { return currentInfiltrationLevel; }
+        set { currentInfiltrationLevel = value; }
     }
 }
