@@ -104,5 +104,9 @@ public class Face
         return new Face(leftEye, rightEye, nose, mouth, contour, hair, hairColor, skinColor);
     }
 
+    public Face updateContour(FacePart contour)
+    {
+        return new Face(leftEye, rightEye, nose, mouth, contour, hair, hairColor, skinColor);
+    }
 }
 

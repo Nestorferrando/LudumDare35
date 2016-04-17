@@ -80,9 +80,6 @@ void OnMouseUp()
                     break;
             }  
     }
-
-
-        Debug.Log(differenceX+" "+differenceY);
     }
 
 
