@@ -6,7 +6,6 @@ using System.ComponentModel.Design;
 public class DraggeableFacePart : MonoBehaviour
 {
     private GameObject bigFaceRenderer;
-    private SingletonData data;
 
     public int partID;
     public PartType partType;
@@ -17,7 +16,6 @@ public class DraggeableFacePart : MonoBehaviour
     void Start()
     {
         bigFaceRenderer = GameObject.Find("bigFaceRenderer");
-        data = GameObject.Find("SingletonData").GetComponent<SingletonData>();
     }
 
     // Update is called once per frame
@@ -70,16 +68,16 @@ void OnMouseUp()
 
             {
                 case PartType.LEFT_EYE:
-                    data.CurrrentFace= data.CurrrentFace.updateLeftEye(new FacePart(PartType.LEFT_EYE, partID, -differenceX*scale.x, -differenceY*scale.y));
+                    SingletonData.CurrrentFace= SingletonData.CurrrentFace.updateLeftEye(new FacePart(PartType.LEFT_EYE, partID, -differenceX*scale.x, -differenceY*scale.y));
                     break;
                 case PartType.RIGHT_EYE:
-                    data.CurrrentFace =  data.CurrrentFace.updateRightEye(new FacePart(PartType.RIGHT_EYE, partID, -differenceX * scale.x, -differenceY * scale.y));
+                    SingletonData.CurrrentFace = SingletonData.CurrrentFace.updateRightEye(new FacePart(PartType.RIGHT_EYE, partID, -differenceX * scale.x, -differenceY * scale.y));
                     break;
                 case PartType.MOUTH:
-                    data.CurrrentFace =  data.CurrrentFace.updateMouth(new FacePart(PartType.MOUTH, partID, -differenceX * scale.x, -differenceY * scale.y));
+                    SingletonData.CurrrentFace = SingletonData.CurrrentFace.updateMouth(new FacePart(PartType.MOUTH, partID, -differenceX * scale.x, -differenceY * scale.y));
                     break;
                 case PartType.NOSE:
-                    data.CurrrentFace = data.CurrrentFace.updateNose(new FacePart(PartType.NOSE, partID, -differenceX * scale.x, -differenceY * scale.y));
+                    SingletonData.CurrrentFace = SingletonData.CurrrentFace.updateNose(new FacePart(PartType.NOSE, partID, -differenceX * scale.x, -differenceY * scale.y));
                     break;
             }  
     }

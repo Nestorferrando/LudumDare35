@@ -1,31 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SingletonData : MonoBehaviour
+public class SingletonData
 {
 
-    private Face _CurrrentFace;
-    private int currentInfiltrationLevel;
-    private Target current;
+    private static Face _CurrrentFace = FacesDatabase.SampleFace;
+    private static int currentInfiltrationLevel;
+    private static Target current;
 
-	// Use this for initialization
-	void Start ()
-	{
-	    _CurrrentFace = FacesDatabase.SampleFace;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
-    public Face CurrrentFace
+
+    public static Face CurrrentFace
     {
         get { return _CurrrentFace; }
         set { _CurrrentFace = value; }
     }
 
-    public int CurrentInfiltrationLevel
+    public static int CurrentInfiltrationLevel
     {
         get { return currentInfiltrationLevel; }
         set { currentInfiltrationLevel = value; }

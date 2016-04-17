@@ -13,8 +13,6 @@ public class FaceRendererScript : MonoBehaviour
     private GameObject currentNose;
     private GameObject currentRightEye;
 
-
-    private SingletonData data;
     private Face PreviousFace;
     public float scale = 0.5f;
 
@@ -25,8 +23,6 @@ public class FaceRendererScript : MonoBehaviour
     {
         shitToBeRemoved = new List<FacePartRemoval>();
         shitRecentlyAdded = new List<FacePartRemoval>();
-
-        data = GameObject.Find("SingletonData").GetComponent<SingletonData>();
 
         Sprite sprite = Resources.Load("clothes", typeof(Sprite)) as Sprite;
         GameObject obj = new GameObject();
@@ -46,11 +42,11 @@ public class FaceRendererScript : MonoBehaviour
 
 
 
-        if (PreviousFace != data.CurrrentFace && shitToBeRemoved.Count==0 && shitRecentlyAdded.Count==0)
+        if (PreviousFace != SingletonData.CurrrentFace && shitToBeRemoved.Count==0 && shitRecentlyAdded.Count==0)
         {
-            renderFace(PreviousFace, data.CurrrentFace);
+            renderFace(PreviousFace, SingletonData.CurrrentFace);
             
-            PreviousFace = data.CurrrentFace;
+            PreviousFace = SingletonData.CurrrentFace;
         }
         //------------------------------
 
