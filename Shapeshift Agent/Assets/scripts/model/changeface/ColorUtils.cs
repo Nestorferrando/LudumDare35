@@ -14,7 +14,7 @@ using System.Text;
         {
             case (HairColor.BLACK): return new UnityEngine.Color(32 / 255.0f, 32 / 255.0f, 32 / 255.0f, 1);
             case (HairColor.BROWN):
-                return new UnityEngine.Color(165/255.0f,84 / 255.0f, 21 / 255.0f, 1);
+                return new UnityEngine.Color(100/255.0f,34 / 255.0f, 13 / 255.0f, 1);
             case (HairColor.BLONDE):
                 return new UnityEngine.Color(255 / 255.0f, 229 / 255.0f, 127 / 255.0f, 1);
             case (HairColor.GINGER):
