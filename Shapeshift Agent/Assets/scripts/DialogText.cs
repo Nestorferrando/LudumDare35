@@ -8,7 +8,7 @@ using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class DialogText : MonoBehaviour {
-    [Range(.01f, .1f)]
+    [Range(.0001f, .1f)]
     public float wait = .005f;
     public static List<string> currentTags = new List<string>();
 
@@ -19,6 +19,7 @@ public class DialogText : MonoBehaviour {
     private Text text;
     private string lastPeak = "";
     private string missionText = "";
+    private string missionFileName = "";
     private const int max_lines = 3;
     private Question currentQuestion;
     private IEnumerator run;
@@ -38,6 +39,12 @@ public class DialogText : MonoBehaviour {
         sound = gameObject.GetComponent<AudioSource>();
         currentQuestion.tags = new List<string>();
         currentQuestion.answers = new List<string>();
+
+        defineMissionText("mission1");
+    }
+
+    public void defineMissionText(string fileName) {
+        missionFileName = fileName;
     }
 
     public void Start() {
@@ -46,7 +53,7 @@ public class DialogText : MonoBehaviour {
         text = gameObject.GetComponent<Text>();
         string s = text.text;
         text.text = "";
-        missionText = Resources.Load<TextAsset>("SceneText/mission1").text;
+        missionText = Resources.Load<TextAsset>("SceneText/" + missionFileName).text;
         run = processText();
     }
 
@@ -63,13 +70,25 @@ public class DialogText : MonoBehaviour {
 
 
     private bool checkTags(string tag) {
-        foreach (string t in currentTags) {
-            //Debug.Log(t + " =?= " + tag + " | " + t==tag + " | " + t.Length + " " + tag.Length);
-            if (t == tag) {
-                return true;
-            } 
+        if (tag[0] != '!') {
+            foreach (string t in currentTags) {
+                //Debug.Log(t + " =?= " + tag + " | " + t==tag + " | " + t.Length + " " + tag.Length);
+                if (t == tag) {
+                    return true;
+                }
+            }
+            return false;
         }
-        return false;
+        else {
+            tag = tag.Substring(1);
+            foreach (string t in currentTags) {
+                //Debug.Log(t + " =?= " + tag + " | " + t==tag + " | " + t.Length + " " + tag.Length);
+                if (t == tag) {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 
     private string preprocessText(string text) {
@@ -132,8 +151,7 @@ public class DialogText : MonoBehaviour {
 
                 foreach (string t in res.Split(sep_nextLine, StringSplitOptions.RemoveEmptyEntries)) {
                     queuedText.Enqueue(t);
-                    Debug.Log(t);
-                    yield return t;
+                    yield return null;
                 }
             }
         }
@@ -170,6 +188,7 @@ public class DialogText : MonoBehaviour {
             
         } else if (queuedText.Count == 0) {
             currentState = State.NONE;
+            launchEmptyConversationAction();
         }
     }
 
@@ -238,7 +257,7 @@ public class DialogText : MonoBehaviour {
         //if (c != ' ' && c != '\n' && c != '\t') {
         if (sound != null) {
             sound.pitch = Random.Range(.9f, 1.1f);
-            if (i%3 == 0)
+            if (i%5 == 0)
                 sound.Play();
         }
         //}
@@ -266,5 +285,9 @@ public class DialogText : MonoBehaviour {
         currentTags.Add(currentQuestion.tags.ElementAt(n+1));
         currentState = State.NEXT;
         handleDialog();
+    }
+
+    private void launchEmptyConversationAction() {
+        Debug.Log("NEXT SCENE!");
     }
 }
