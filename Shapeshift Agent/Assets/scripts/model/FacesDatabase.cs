@@ -67,6 +67,6 @@ using System.Text;
         );
 
 
-    public static Face SampleFace = Subject5;
+    public static Face SampleFace = Subject1;
     }
 

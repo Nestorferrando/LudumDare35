@@ -36,7 +36,7 @@ using System.Text;
 
           if (error > maxError)
           {
-              error = maxError;
+            maxError = error;
             part = PartType.RIGHT_EYE;
         }
 
@@ -47,7 +47,7 @@ using System.Text;
 
         if (error > maxError)
         {
-            error = maxError;
+            maxError = error;
             part = PartType.NOSE;
         }
 
@@ -59,7 +59,7 @@ using System.Text;
 
         if (error > maxError)
         {
-            error = maxError;
+            maxError = error;
             part = PartType.MOUTH;
         }
 
@@ -68,29 +68,48 @@ using System.Text;
 
       private static float getFaceDisplacementError(Face idealFace, Face realFace)
     {
-        float totalSimilarityError = 0;
+        PartType part = PartType.LEFT_EYE;
+        float maxError = ERROR_PER_PIXEL *
+      (float)Math.Sqrt(
+          (idealFace.LeftEye.OffsetX - realFace.LeftEye.OffsetX) * (idealFace.LeftEye.OffsetX - realFace.LeftEye.OffsetX) +
+          (idealFace.LeftEye.OffsetY - realFace.LeftEye.OffsetY) * (idealFace.LeftEye.OffsetY - realFace.LeftEye.OffsetY));
 
-        totalSimilarityError += ERROR_PER_PIXEL *
-          (float)Math.Sqrt(
-              (idealFace.LeftEye.OffsetX - realFace.LeftEye.OffsetX) * (idealFace.LeftEye.OffsetX - realFace.LeftEye.OffsetX) +
-              (idealFace.LeftEye.OffsetY - realFace.LeftEye.OffsetY) * (idealFace.LeftEye.OffsetY - realFace.LeftEye.OffsetY));
 
-        totalSimilarityError += ERROR_PER_PIXEL *
+        float error = ERROR_PER_PIXEL *
           (float)Math.Sqrt(
               (idealFace.RightEye.OffsetX - realFace.RightEye.OffsetX) * (idealFace.RightEye.OffsetX - realFace.RightEye.OffsetX) +
               (idealFace.RightEye.OffsetY - realFace.RightEye.OffsetY) * (idealFace.RightEye.OffsetY - realFace.RightEye.OffsetY));
 
-        totalSimilarityError += ERROR_PER_PIXEL *
+        if (error > maxError)
+        {
+            maxError = error;
+            part = PartType.RIGHT_EYE;
+        }
+
+        error = ERROR_PER_PIXEL *
           (float)Math.Sqrt(
               (idealFace.Nose.OffsetX - realFace.Nose.OffsetX) * (idealFace.Nose.OffsetX - realFace.Nose.OffsetX) +
               (idealFace.Nose.OffsetY - realFace.Nose.OffsetY) * (idealFace.Nose.OffsetY - realFace.Nose.OffsetY));
 
-        totalSimilarityError += ERROR_PER_PIXEL *
+        if (error > maxError)
+        {
+            maxError = error;
+            part = PartType.NOSE;
+        }
+
+
+        error = ERROR_PER_PIXEL *
           (float)Math.Sqrt(
               (idealFace.Mouth.OffsetX - realFace.Mouth.OffsetX) * (idealFace.Mouth.OffsetX - realFace.Mouth.OffsetX) +
               (idealFace.Mouth.OffsetY - realFace.Mouth.OffsetY) * (idealFace.Mouth.OffsetY - realFace.Mouth.OffsetY));
 
-        return totalSimilarityError;
+        if (error > maxError)
+        {
+            maxError = error;
+            part = PartType.MOUTH;
+        }
+
+        return maxError;
     }
 
       private static PartType getPartWithWorstShape(Face idealFace, Face realFace)
