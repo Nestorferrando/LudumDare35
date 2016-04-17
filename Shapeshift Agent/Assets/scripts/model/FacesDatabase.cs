@@ -67,6 +67,18 @@ using System.Text;
         );
 
 
-    public static Face SampleFace = Subject1;
+    public static Face Protagonist = new Face(
+        new FacePart(PartType.LEFT_EYE, 2, -7.08f, 4.65f),
+        new FacePart(PartType.RIGHT_EYE, 2, 7.39f,5f),
+        new FacePart(PartType.NOSE, 4, 1.382f, -2.12f),
+        new FacePart(PartType.MOUTH, 2, 0.70f, -14.56f),
+        new FacePart(PartType.CONTOUR, 1, 0, 0),
+        new FacePart(PartType.HAIR, 5, 0, 0),
+        HairColor.GINGER,
+        SkinColor.LIGHT_BROWN
+        );
+
+
+    public static Face SampleFace = Protagonist;
     }
 

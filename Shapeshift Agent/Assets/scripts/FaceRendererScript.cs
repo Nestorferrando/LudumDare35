@@ -125,14 +125,18 @@ public class FaceRendererScript : MonoBehaviour
     private void renderFace(Face previousFace, Face face)
 
     {
-
-        CorrespondenceError error = CorrespondenceUtils.GetFaceError(face, FacesDatabase.Subject1);
+        /*
+        CorrespondenceError error = CorrespondenceUtils.GetFaceError(face,FacesDatabase.Subject1);
   Debug.Log("--------");
-        Debug.Log(error.TotalError + " " + error.BadSelectedShapes + " " + error.DisplacementError);
-        Debug.Log(error.PartWithWorstShape + " " + error.WorstDisplacedPart);
+        Debug.Log("nose "+face.Nose.Id+" "+face.Nose.OffsetX+" "+face.Nose.OffsetY);
+        Debug.Log("left eye " + face.LeftEye.Id + " " + face.LeftEye.OffsetX + " " + face.LeftEye.OffsetY);
+        Debug.Log("right eye " + face.RightEye.Id + " " + face.RightEye.OffsetX + " " + face.RightEye.OffsetY);
+        Debug.Log("mouth" + face.Mouth.Id + " " + face.Mouth.OffsetX + " " + face.Mouth.OffsetY);
+        Debug.Log("skin" + face.Contour.Id+" "+face.SkinColor);
+        Debug.Log("hair" + face.Hair.Id + " " + face.HairColor);
         Debug.Log("--------");
 
-
+    */
         var sprite = Resources.Load("face" + face.Contour.Id, typeof (Sprite)) as Sprite;
         var height = sprite.bounds.size.y;
         var width = sprite.bounds.size.x;
