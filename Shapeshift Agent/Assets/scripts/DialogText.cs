@@ -15,15 +15,16 @@ public class DialogText : MonoBehaviour {
 
     private string str;
     private AudioSource sound;
-    private Queue<string> queuedText;
+    private Queue<string> queuedText = new Queue<string>();
     private Text text;
     private string lastPeak = "";
     private string missionText = "";
     private const int max_lines = 3;
     private Question currentQuestion;
+    private IEnumerator run;
 
     private enum State { NONE, DRAWALL, NEXT, QUESTION }
-    private State currentState = State.NONE;
+    private State currentState = State.NEXT;
 
     private struct Question {
         public List<string> tags;
@@ -46,8 +47,7 @@ public class DialogText : MonoBehaviour {
         string s = text.text;
         text.text = "";
         missionText = Resources.Load<TextAsset>("SceneText/mission1").text;
-        queuedText = processText(missionText, true);
-        displayNextDialog();
+        run = processText();
     }
 
 
@@ -111,12 +111,11 @@ public class DialogText : MonoBehaviour {
         return res;
     }
 
-    private Queue<string> processText(string text, bool preprocess = false) {
-        if (preprocess) {
-            text = preprocessText(text);
-        }
+    private IEnumerator processText() {
+        string text = missionText;
+        text = preprocessText(text);
+        
         //Debug.Log("text = " + text);
-        Queue<string> result = new Queue<string>();
 
         string[] sep_tag = { "[TAG]" };
         string[] sep_nextLine = { "[next]" };
@@ -132,14 +131,14 @@ public class DialogText : MonoBehaviour {
                 }
 
                 foreach (string t in res.Split(sep_nextLine, StringSplitOptions.RemoveEmptyEntries)) {
-                    result.Enqueue(t);
+                    queuedText.Enqueue(t);
+                    Debug.Log(t);
+                    yield return t;
                 }
-
             }
         }
 
-        return result;
-        
+        yield break;
     }
 
    
@@ -147,6 +146,9 @@ public class DialogText : MonoBehaviour {
     private void displayNextDialog() {
         StopAllCoroutines();
         text.text = "";
+        run.MoveNext();
+        
+        
         if (queuedText.Count > 0) {
             lastPeak = queuedText.Dequeue();
 
