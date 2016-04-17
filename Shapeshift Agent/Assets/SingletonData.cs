@@ -4,7 +4,7 @@ using System.Collections;
 public class SingletonData
 {
 
-    private static Face _CurrrentFace = FacesDatabase.SampleFace;
+    private static Face _CurrrentFace = FacesDatabase.Subject5;
     private static int currentInfiltrationLevel;
     private static Target current;
 

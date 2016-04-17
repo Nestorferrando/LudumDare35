@@ -112,6 +112,7 @@ void OnMouseUp()
         obj.transform.localScale = new Vector3(1f, 1f, 1);
         SpriteRenderer rend = obj.AddComponent(typeof(SpriteRenderer)) as SpriteRenderer;
         rend.sprite = sprite;
+        rend.sortingOrder = 2;
         obj.transform.parent = gameObject.transform;
     }
 
