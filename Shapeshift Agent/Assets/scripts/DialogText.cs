@@ -3,12 +3,15 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Schema;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class DialogText : MonoBehaviour {
     [Range(.01f, .1f)]
     public float wait = .005f;
+    public static List<string> currentTags = new List<string>();
+
 
     private string str;
     private AudioSource sound;
@@ -17,29 +20,39 @@ public class DialogText : MonoBehaviour {
     private string lastPeak = "";
     private string missionText = "";
     private const int max_lines = 3;
+    private Question currentQuestion;
 
     private enum State { NONE, DRAWALL, NEXT, QUESTION }
     private State currentState = State.NONE;
 
+    private struct Question {
+        public List<string> tags;
+        public List<string> answers;
+    };
 
+    private List<Question> questions = new List<Question>();
+    private int questionIndex = -1;
 
     public void Awake() {
         sound = gameObject.GetComponent<AudioSource>();
+        currentQuestion.tags = new List<string>();
+        currentQuestion.answers = new List<string>();
     }
 
     public void Start() {
         //generateBG();
+        currentTags.Add("ALWAYS");
         text = gameObject.GetComponent<Text>();
         string s = text.text;
         text.text = "";
         missionText = Resources.Load<TextAsset>("SceneText/mission1").text;
-        queuedText = processText(missionText);
+        queuedText = processText(missionText, true);
         displayNextDialog();
     }
 
 
 
-    public void generateBG() { // TODO: use img
+    private void generateBG() { // TODO: use img
         Rect r = gameObject.GetComponent<RectTransform>().rect;
         GameObject g = new GameObject("DialogBG");
         SpriteRenderer sr = g.AddComponent<SpriteRenderer>();
@@ -49,8 +62,7 @@ public class DialogText : MonoBehaviour {
     }
 
 
-    string[] currentTags = { "FAILURE", "ALWAYS", "SILLY" };
-    public bool checkTags(string tag) {
+    private bool checkTags(string tag) {
         foreach (string t in currentTags) {
             //Debug.Log(t + " =?= " + tag + " | " + t==tag + " | " + t.Length + " " + tag.Length);
             if (t == tag) {
@@ -60,7 +72,50 @@ public class DialogText : MonoBehaviour {
         return false;
     }
 
-    public Queue<string> processText(string text) {
+    private string preprocessText(string text) {
+        string[] lines = text.Split('\n');
+        bool questionFound = false;
+        string res = "";
+
+        for (int i = 0; i < lines.Length; ++i) {
+            //Debug.Log("lines["+i+"] = " + lines[i] + " " + lines[i].Length);
+            if (lines[i].Substring(0, lines[i].Length-1) == "[question]") {
+                questionFound = true;
+                Question q = new Question();
+                q.answers = new List<string>();
+                q.tags = new List<string>();
+                questions.Add(q);
+                res += "[question]" + ++questionIndex + "\n";
+                continue;
+            }
+            else if (lines[i].Substring(0, lines[i].Length - 1) == "[endquestion]") {
+                questionFound = false;
+                continue;
+            }
+
+            if (questionFound) {
+                string s = lines[i];
+                int index = s.IndexOf(']');
+                string tag = s.Substring(1, index-1);
+                string info = s.Substring(index+1);
+                //Debug.Log("tag = " + tag + " question = " + question);
+                questions.Last().answers.Add(info);
+                questions.Last().tags.Add(tag);
+                //Debug.Log("> tag = " + questions.Last().tags.Last() + " question = " + questions.Last().questions.Last());
+            } else {
+                res += lines[i] + '\n';
+            }
+
+        }
+
+        return res;
+    }
+
+    private Queue<string> processText(string text, bool preprocess = false) {
+        if (preprocess) {
+            text = preprocessText(text);
+        }
+        //Debug.Log("text = " + text);
         Queue<string> result = new Queue<string>();
 
         string[] sep_tag = { "[TAG]" };
@@ -89,26 +144,51 @@ public class DialogText : MonoBehaviour {
 
    
 
-    public void displayNextDialog() {
+    private void displayNextDialog() {
         StopAllCoroutines();
         text.text = "";
         if (queuedText.Count > 0) {
             lastPeak = queuedText.Dequeue();
-            StartCoroutine(animateText(lastPeak));
+
+            int i = lastPeak.IndexOf("[question]");
+            if (i > 0) {
+                currentState = State.QUESTION;
+                string n_str = "";
+                i += "[question]".Length;
+                while (i < lastPeak.Length && lastPeak[i] != '\n') {
+                    n_str += lastPeak[i++];
+                }
+                int n = Convert.ToInt32(n_str);
+                displayQuestionDialog(n);
+            }
+            else {
+                currentState = State.DRAWALL;
+                StartCoroutine(animateText(lastPeak));
+            }
+            
         } else if (queuedText.Count == 0) {
             currentState = State.NONE;
         }
     }
 
-    public void displayAllDialog() {
-        StopAllCoroutines();
-        text.text = lastPeak;
+    private void displayQuestionDialog(int questionNumber) {
+        currentQuestion = questions.ElementAt(questionNumber);
+        String s = "";
+        for (int i = 0; i < currentQuestion.answers.Count; ++i) {
+            s += currentQuestion.answers[i] + "\n";
+        }
+        StartCoroutine(animateText(s));
+    }
+
+    private void displayAllDialog() {
+        if (!lastPeak.Contains("[question]")) {
+            StopAllCoroutines();
+            text.text = lastPeak;
+        }
     }
 
     public void Update() {
         if (Input.GetMouseButtonDown(0)) {
-            //displayNextDialog();
-            //mouse0pressed = true;
             handleDialog();
         }
     }
@@ -124,18 +204,17 @@ public class DialogText : MonoBehaviour {
                 displayNextDialog();
                 break;
             case State.QUESTION:
-                displayQuestionDialog();
-
+                //displayQuestionDialog();
+                break;
             case State.NONE:
             default:
                 break;
         }
 
-        Debug.Log(currentState);
+        //Debug.Log(currentState);
     }
 
     private IEnumerator animateText(string strComplete) {
-        currentState = State.DRAWALL;
         int i = 0;
         str = "";
         while (i < strComplete.Length) {
@@ -144,13 +223,13 @@ public class DialogText : MonoBehaviour {
             yield return new WaitForSeconds(wait);
         }
 
-        currentState = State.NEXT;
+        if (currentState != State.QUESTION) {
+            currentState = State.NEXT;
+        } else {
+            
+        }
     }
-
-    private void drawEverything(string completeText) {
-        StopAllCoroutines();
-        text.text = completeText;
-    }
+    
 
     private void drawNewText(string str, char c, int i) {
         text.text = str;
@@ -161,5 +240,29 @@ public class DialogText : MonoBehaviour {
                 sound.Play();
         }
         //}
+    }
+
+    public void DialogButton0Pressed() {
+        answerSelected(0);
+    }
+
+    public void DialogButton1Pressed() {
+        answerSelected(1);
+    }
+
+    public void DialogButton2Pressed() {
+        answerSelected(2);
+    }
+
+    public void DialogButton3Pressed() {
+        answerSelected(3);
+    }
+
+    private void answerSelected(int n) {
+        Debug.Log(n + " button selected!");
+        Debug.Log(currentQuestion.tags.ElementAt(n+1));
+        currentTags.Add(currentQuestion.tags.ElementAt(n+1));
+        currentState = State.NEXT;
+        handleDialog();
     }
 }
