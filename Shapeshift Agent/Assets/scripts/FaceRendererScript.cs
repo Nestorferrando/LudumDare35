@@ -46,9 +46,10 @@ public class FaceRendererScript : MonoBehaviour
 
 
 
-        if (PreviousFace != data.CurrrentFace)
+        if (PreviousFace != data.CurrrentFace && shitToBeRemoved.Count==0 && shitRecentlyAdded.Count==0)
         {
             renderFace(PreviousFace, data.CurrrentFace);
+            
             PreviousFace = data.CurrrentFace;
         }
         //------------------------------
@@ -150,7 +151,7 @@ public class FaceRendererScript : MonoBehaviour
             rend.color = ColorUtils.getSkinColor(face.SkinColor);
             if (previousFace != null) rend.color = new Color(rend.color.r,rend.color.g,rend.color.b,0);
             obj.transform.parent = gameObject.transform;
-            shitToBeRemoved.Add(new FacePartRemoval(currentContour,obj, true));
+            if (previousFace != null) shitToBeRemoved.Add(new FacePartRemoval(currentContour,obj, true));
             currentContour = obj;
 
             sprite = Resources.Load("face" + face.Contour.Id + "_back", typeof (Sprite)) as Sprite;
@@ -163,7 +164,7 @@ public class FaceRendererScript : MonoBehaviour
             obj.transform.parent = gameObject.transform;
             if (previousFace != null) rend.color = new Color(rend.color.r, rend.color.g, rend.color.b, 0);
             if (previousFace != null) obj.transform.Translate(0, 0, 20);
-            shitToBeRemoved.Add(new FacePartRemoval(currentContourBack, obj, true));
+            if (previousFace != null) shitToBeRemoved.Add(new FacePartRemoval(currentContourBack, obj, true));
             currentContourBack = obj;
         }
 
@@ -181,7 +182,7 @@ public class FaceRendererScript : MonoBehaviour
 
             if (previousFace != null) rend.color = new Color(rend.color.r, rend.color.g, rend.color.b, 0);
             if (previousFace != null) obj.transform.Translate(0, 0, 20);
-            shitToBeRemoved.Add(new FacePartRemoval(currentHair, obj, true));
+            if (previousFace != null) shitToBeRemoved.Add(new FacePartRemoval(currentHair, obj, true));
             currentHair = obj;
         }
 
@@ -197,7 +198,7 @@ public class FaceRendererScript : MonoBehaviour
             if (previousFace != null) obj.transform.localScale = new Vector3(0, 0, 1);
             obj.transform.parent = gameObject.transform;
             if (previousFace != null) obj.transform.Translate(0, 0, 20);
-            shitToBeRemoved.Add(new FacePartRemoval(currentLeftEye, obj, false));
+            if (previousFace != null) shitToBeRemoved.Add(new FacePartRemoval(currentLeftEye, obj, false));
             currentLeftEye = obj;
 
         }
@@ -213,7 +214,7 @@ public class FaceRendererScript : MonoBehaviour
             if (previousFace != null) obj.transform.localScale = new Vector3(0, 0, 1);
             obj.transform.parent = gameObject.transform;
             if (previousFace != null) obj.transform.Translate(0, 0, 20);
-            shitToBeRemoved.Add(new FacePartRemoval(currentRightEye, obj, false));
+            if (previousFace != null) shitToBeRemoved.Add(new FacePartRemoval(currentRightEye, obj, false));
             currentRightEye = obj;
         }
 
@@ -229,7 +230,7 @@ public class FaceRendererScript : MonoBehaviour
             rend.sprite = sprite;
             obj.transform.parent = gameObject.transform;
             if (previousFace != null) obj.transform.Translate(0, 0, 20);
-            shitToBeRemoved.Add(new FacePartRemoval(currentMouth, obj, false));
+            if (previousFace != null) shitToBeRemoved.Add(new FacePartRemoval(currentMouth, obj, false));
             currentMouth = obj;
         }
         if (previousFace == null || !face.Nose.Equals(previousFace.Nose))
@@ -243,7 +244,7 @@ public class FaceRendererScript : MonoBehaviour
             rend.sprite = sprite;
             obj.transform.parent = gameObject.transform;
             if (previousFace != null) obj.transform.Translate(0, 0, 20);
-            shitToBeRemoved.Add(new FacePartRemoval(currentNose, obj, false));
+            if (previousFace != null) shitToBeRemoved.Add(new FacePartRemoval(currentNose, obj, false));
             currentNose = obj;
         }
 
