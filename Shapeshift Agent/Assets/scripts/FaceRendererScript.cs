@@ -35,6 +35,7 @@ public class FaceRendererScript : MonoBehaviour
         SpriteRenderer rend = obj.AddComponent(typeof(SpriteRenderer)) as SpriteRenderer;
         rend.sprite = sprite;
         obj.transform.parent = gameObject.transform;
+ 
     }
 
 

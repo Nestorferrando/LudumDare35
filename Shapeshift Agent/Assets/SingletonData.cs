@@ -5,6 +5,7 @@ public class SingletonData : MonoBehaviour
 {
 
     private Face _CurrrentFace;
+    private int currentSubjectNumber;
 
 	// Use this for initialization
 	void Start ()
@@ -23,5 +24,9 @@ public class SingletonData : MonoBehaviour
         set { _CurrrentFace = value; }
     }
 
-
+    public int CurrentSubjectNumber
+    {
+        get { return currentSubjectNumber; }
+        set { currentSubjectNumber = value; }
+    }
 }
