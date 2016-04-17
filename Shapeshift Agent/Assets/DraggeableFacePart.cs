@@ -98,8 +98,6 @@ void OnMouseUp()
 
     void OnMouseDown()
     {
-        Vector3 position = Input.mousePosition;
-
         Sprite sprite = Resources.Load(geFileName(), typeof(Sprite)) as Sprite;
         obj = new GameObject();
         Vector3 mousePos=Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
