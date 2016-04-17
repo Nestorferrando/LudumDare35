@@ -6,11 +6,8 @@ public class ClickableHairColorButton : MonoBehaviour
 
 
     public HairColor color;
-    private SingletonData data;
-
 	// Use this for initialization
 	void Start () {
-        data = GameObject.Find("SingletonData").GetComponent<SingletonData>();
 
 	    SpriteRenderer rend = GetComponent<SpriteRenderer>();
         rend.color = ColorUtils.getHairColor(color);
@@ -18,7 +15,7 @@ public class ClickableHairColorButton : MonoBehaviour
 
     void OnMouseDown()
     {
-        data.CurrrentFace = data.CurrrentFace.updateHairColor(color);
+        SingletonData.CurrrentFace = SingletonData.CurrrentFace.updateHairColor(color);
     }
 
 

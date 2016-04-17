@@ -6,7 +6,6 @@ using System.ComponentModel.Design;
 public class DraggeableFacePart : MonoBehaviour
 {
     private GameObject bigFaceRenderer;
-    private SingletonData data;
 
     public int partID;
     public PartType partType;
@@ -17,7 +16,6 @@ public class DraggeableFacePart : MonoBehaviour
     void Start()
     {
         bigFaceRenderer = GameObject.Find("bigFaceRenderer");
-        data = GameObject.Find("SingletonData").GetComponent<SingletonData>();
     }
 
     // Update is called once per frame
@@ -50,11 +48,14 @@ public class DraggeableFacePart : MonoBehaviour
 
 void OnMouseUp()
 {
-   
-       Destroy(obj);
-    obj = null;
 
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
+    if (obj != null)
+    {
+        Destroy(obj);
+        obj = null;
+    }
+
+    Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
 
     float differenceX =     bigFaceRenderer.transform.position.x - mousePos.x;
     float differenceY = bigFaceRenderer.transform.position.y - mousePos.y;
@@ -67,16 +68,16 @@ void OnMouseUp()
 
             {
                 case PartType.LEFT_EYE:
-                    data.CurrrentFace= data.CurrrentFace.updateLeftEye(new FacePart(PartType.LEFT_EYE, partID, -differenceX*scale.x, -differenceY*scale.y));
+                    SingletonData.CurrrentFace= SingletonData.CurrrentFace.updateLeftEye(new FacePart(PartType.LEFT_EYE, partID, -differenceX*scale.x, -differenceY*scale.y));
                     break;
                 case PartType.RIGHT_EYE:
-                    data.CurrrentFace =  data.CurrrentFace.updateRightEye(new FacePart(PartType.RIGHT_EYE, partID, -differenceX * scale.x, -differenceY * scale.y));
+                    SingletonData.CurrrentFace = SingletonData.CurrrentFace.updateRightEye(new FacePart(PartType.RIGHT_EYE, partID, -differenceX * scale.x, -differenceY * scale.y));
                     break;
                 case PartType.MOUTH:
-                    data.CurrrentFace =  data.CurrrentFace.updateMouth(new FacePart(PartType.MOUTH, partID, -differenceX * scale.x, -differenceY * scale.y));
+                    SingletonData.CurrrentFace = SingletonData.CurrrentFace.updateMouth(new FacePart(PartType.MOUTH, partID, -differenceX * scale.x, -differenceY * scale.y));
                     break;
                 case PartType.NOSE:
-                    data.CurrrentFace = data.CurrrentFace.updateNose(new FacePart(PartType.NOSE, partID, -differenceX * scale.x, -differenceY * scale.y));
+                    SingletonData.CurrrentFace = SingletonData.CurrrentFace.updateNose(new FacePart(PartType.NOSE, partID, -differenceX * scale.x, -differenceY * scale.y));
                     break;
             }  
     }
@@ -98,8 +99,12 @@ void OnMouseUp()
 
     void OnMouseDown()
     {
-        Vector3 position = Input.mousePosition;
 
+        if (obj != null)
+        {
+            Destroy(obj);
+            obj = null;
+        }
         Sprite sprite = Resources.Load(geFileName(), typeof(Sprite)) as Sprite;
         obj = new GameObject();
         Vector3 mousePos=Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));

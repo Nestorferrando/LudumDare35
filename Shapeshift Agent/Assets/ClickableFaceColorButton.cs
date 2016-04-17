@@ -6,11 +6,11 @@ public class ClickableFaceColorButton : MonoBehaviour
 
 
     public SkinColor color;
-    private SingletonData data;
+
 
 	// Use this for initialization
 	void Start () {
-        data = GameObject.Find("SingletonData").GetComponent<SingletonData>();
+
 
 	    SpriteRenderer rend = GetComponent<SpriteRenderer>();
         rend.color = ColorUtils.getSkinColor(color);
@@ -18,7 +18,7 @@ public class ClickableFaceColorButton : MonoBehaviour
 
     void OnMouseDown()
     {
-        data.CurrrentFace = data.CurrrentFace.updateSkinColor(color);
+        SingletonData.CurrrentFace = SingletonData.CurrrentFace.updateSkinColor(color);
     }
 
 

@@ -36,7 +36,7 @@ using System.Text;
 
           if (error > maxError)
           {
-              error = maxError;
+            maxError = error;
             part = PartType.RIGHT_EYE;
         }
 
@@ -47,7 +47,7 @@ using System.Text;
 
         if (error > maxError)
         {
-            error = maxError;
+            maxError = error;
             part = PartType.NOSE;
         }
 
@@ -59,7 +59,7 @@ using System.Text;
 
         if (error > maxError)
         {
-            error = maxError;
+            maxError = error;
             part = PartType.MOUTH;
         }
 
@@ -68,29 +68,48 @@ using System.Text;
 
       private static float getFaceDisplacementError(Face idealFace, Face realFace)
     {
-        float totalSimilarityError = 0;
+        PartType part = PartType.LEFT_EYE;
+        float maxError = ERROR_PER_PIXEL *
+      (float)Math.Sqrt(
+          (idealFace.LeftEye.OffsetX - realFace.LeftEye.OffsetX) * (idealFace.LeftEye.OffsetX - realFace.LeftEye.OffsetX) +
+          (idealFace.LeftEye.OffsetY - realFace.LeftEye.OffsetY) * (idealFace.LeftEye.OffsetY - realFace.LeftEye.OffsetY));
 
-        totalSimilarityError += ERROR_PER_PIXEL *
-          (float)Math.Sqrt(
-              (idealFace.LeftEye.OffsetX - realFace.LeftEye.OffsetX) * (idealFace.LeftEye.OffsetX - realFace.LeftEye.OffsetX) +
-              (idealFace.LeftEye.OffsetY - realFace.LeftEye.OffsetY) * (idealFace.LeftEye.OffsetY - realFace.LeftEye.OffsetY));
 
-        totalSimilarityError += ERROR_PER_PIXEL *
+        float error = ERROR_PER_PIXEL *
           (float)Math.Sqrt(
               (idealFace.RightEye.OffsetX - realFace.RightEye.OffsetX) * (idealFace.RightEye.OffsetX - realFace.RightEye.OffsetX) +
               (idealFace.RightEye.OffsetY - realFace.RightEye.OffsetY) * (idealFace.RightEye.OffsetY - realFace.RightEye.OffsetY));
 
-        totalSimilarityError += ERROR_PER_PIXEL *
+        if (error > maxError)
+        {
+            maxError = error;
+            part = PartType.RIGHT_EYE;
+        }
+
+        error = ERROR_PER_PIXEL *
           (float)Math.Sqrt(
               (idealFace.Nose.OffsetX - realFace.Nose.OffsetX) * (idealFace.Nose.OffsetX - realFace.Nose.OffsetX) +
               (idealFace.Nose.OffsetY - realFace.Nose.OffsetY) * (idealFace.Nose.OffsetY - realFace.Nose.OffsetY));
 
-        totalSimilarityError += ERROR_PER_PIXEL *
+        if (error > maxError)
+        {
+            maxError = error;
+            part = PartType.NOSE;
+        }
+
+
+        error = ERROR_PER_PIXEL *
           (float)Math.Sqrt(
               (idealFace.Mouth.OffsetX - realFace.Mouth.OffsetX) * (idealFace.Mouth.OffsetX - realFace.Mouth.OffsetX) +
               (idealFace.Mouth.OffsetY - realFace.Mouth.OffsetY) * (idealFace.Mouth.OffsetY - realFace.Mouth.OffsetY));
 
-        return totalSimilarityError;
+        if (error > maxError)
+        {
+            maxError = error;
+            part = PartType.MOUTH;
+        }
+
+        return maxError;
     }
 
       private static PartType getPartWithWorstShape(Face idealFace, Face realFace)
@@ -149,9 +168,9 @@ using System.Text;
           return part;
       }
 
-      private static float getFaceShapeError(Face idealFace, Face realFace)
+      private static int getFaceShapeError(Face idealFace, Face realFace)
       {
-          float totalSimilarityError = 0;
+        int totalSimilarityError = 0;
 
         totalSimilarityError += getCorrespondenceError(idealFace.Contour, realFace.Contour);
         totalSimilarityError += getCorrespondenceError(idealFace.Hair, realFace.Hair);
@@ -167,21 +186,17 @@ using System.Text;
 
 
 
-      private static float getCorrespondenceError(FacePart idealPart, FacePart chosenPart)
+      private static int getCorrespondenceError(FacePart idealPart, FacePart chosenPart)
 
       {
-
           int idealIndex = idealPart.Id;
           int realIndex = chosenPart.Id;
 
           if (Math.Abs(idealIndex - realIndex) == 0) return 0;
-           if (Math.Abs(idealIndex - realIndex) == 1) return 0.5f;
-        if (Math.Abs(idealIndex - realIndex) > 1) return 1;
-
           return 1;
       }
 
-    private static float getHairColorError(HairColor idealColor, HairColor chosenColor)
+    private static int getHairColorError(HairColor idealColor, HairColor chosenColor)
 
     {
 
@@ -189,12 +204,10 @@ using System.Text;
         int realIndex = (int) chosenColor;
 
         if (Math.Abs(idealIndex - realIndex) == 0) return 0;
-        if (Math.Abs(idealIndex - realIndex) == 1) return 0.5f;
-        if (Math.Abs(idealIndex - realIndex) > 1) return 1;
         return 1;
     }
 
-    private static float getSkinColorError(SkinColor idealColor, SkinColor chosenColor)
+    private static int getSkinColorError(SkinColor idealColor, SkinColor chosenColor)
 
     {
 
@@ -202,8 +215,6 @@ using System.Text;
         int realIndex = (int)chosenColor;
 
         if (Math.Abs(idealIndex - realIndex) == 0) return 0;
-        if (Math.Abs(idealIndex - realIndex) == 1) return 0.5f;
-        if (Math.Abs(idealIndex - realIndex) > 1) return 1;
         return 1;
     }
 }
