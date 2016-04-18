@@ -410,7 +410,6 @@ public class DialogText : MonoBehaviour {
             SingletonData.CurrentTarget = SingletonData.CurrentTarget.decreaseConfidence();
         }
         if (SingletonData.CurrentTarget.Trust == TargetTrust.ZERO) {
-            //Control.currentTags.Add(Control.currentMission() + "notrust");
             Control.addTraitFailTag(Control.TraitFail.NOTRUST);
         }
         Debug.Log("CALC TRUST REPORT: " + SingletonData.CurrentTarget.Trust);

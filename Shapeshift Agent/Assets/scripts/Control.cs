@@ -19,6 +19,11 @@ public static class Control {
             // DRAW FINAL
             UnityEngine.Debug.Log("IMPLEMENT FINAL SCENE");
         }
+        //SingletonData.CurrentFace = FacesDatabase.getFaceFromLevel(missionIndex+1);
+        if (missionIndex % 2 == 0) {
+            SingletonData.CurrentInfiltrationLevel = missionIndex/2;
+            SingletonData.updateTargetTrustToInitial();
+        }
         return missions[++missionIndex];
     }
 
@@ -63,10 +68,13 @@ public static class Control {
         }
     }
 
+    private static HashSet<string> failTagChecked = new HashSet<string>(); 
+
     public static int numFailsCurrentMission() {
         int count = 0;
         foreach (string s in currentTags) {
-            if (s.Contains("f_")) {
+            if (s.Contains("f_") && !failTagChecked.Contains(s)) {
+                failTagChecked.Add(s);
                 ++count;
             }
         }

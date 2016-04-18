@@ -32,17 +32,14 @@ something
 [s_Q2D] You STINK
 [endquestion]
 [TAG]
-f_Q2A
-No, that's not you. C'mon, please, tell me!
-[TAG]
 f_Q2B
 Wh-What!? I can't believe this, you said they smelled just like cherubs in Heaven and tasted even better! Oh Hannah, Hannah, are you making fun of me? This is something I really hate, you know. I've killed for less. And I am not making fun of you.
-[TAG]
-f_Q2C
-That's not you Hannah. I do not recognise you.
 [TAG]
 s_Q2D
 Ohh Hannah, I love you so much I can't even tell. I'm going to make those muffins you love so much! Like those cherubs in heaven you know! Ha ha ha.
 [TAG]
 mission0bnotrust
 I DO NOT KNOW YOU!
+[TAG]
+!mission0bnotrust&!s_Q2D&!s_Q1D
+Well Hannah, it does not matter, I don't mind you don't say that. I'm just glad you're here.

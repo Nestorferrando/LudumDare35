@@ -76,15 +76,16 @@ using System.Text;
         SkinColor.LIGHT_BROWN
         );
 
-        public static Face InitialFace = Subject1;
+        public static Face InitialFace = Protagonist;
 
         public static Face getFaceFromLevel(int currentInfiltrationLevel)
         {
             switch (currentInfiltrationLevel)
             {
-            case 0: return Subject1;
+            case 0: return Subject3;
             case 1: return Subject2;
-            case 2: return Subject3;
+            case 2: return Subject1;
+            // unused:
             case 3: return Subject4;
             case 4: return Subject5;
         }

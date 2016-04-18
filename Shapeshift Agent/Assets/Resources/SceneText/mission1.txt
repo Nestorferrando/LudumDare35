@@ -1,9 +1,10 @@
 [TAG]
 ALWAYS
-
-Welcome back, agent. I'll be quick here: you're becoming the cleaning lady of a strange man.
-Go there and do your work.
+Welcome back, agent. I'll be quick here: you're becoming a black woman here. We know she moved to this country with her husband five years ago and we suspect this man is related to a series of political crimes we must stop at any cost.
+[next]
+We count on you to do this job.
 
 [TAG]
 mission1bfail
-I'm becoming to getting tired of losing agents with this missions... You don't want to see me tired, so go there!
+I'm becoming to getting tired of losing agents with this missions... And you don't want to see me tired.
+You already know the mission details, so go there!
