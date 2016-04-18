@@ -1,6 +1,27 @@
 [TAG]
 !mission0bnotrust
 Hannah? Is it you? Jesus, what a relief, I'm so glad you're here! One of my friends told me you've had a terrible accident! Oh Hannah, I love you so much! Please, please tell me what you always say every time I'm afraid!
+
+[TAG]
+mission0bhairfail&!mission1bnotrust
+By the way, have you been to the hairdresser? Nevermind!
+
+[TAG]
+mission0bfacefail&!mission1bnotrust
+Your skin looks strange. What have you done to you? Who cares!
+
+[TAG]
+mission0beyefail&!mission1bnotrust
+There's something in your eyes that I... Well, nevermind!
+
+[TAG]
+mission0bnosefail&!mission1bnotrust
+Your nose... Whatever!
+
+[TAG]
+mission0bcontourfail&!mission1bnotrust
+Your chin is... Well, I don't know, it should be me, do not pay me attention
+
 [next]
 [question]
 [f_Q1] I've been so worried Hannah! Please, say it!
@@ -36,10 +57,10 @@ f_Q2B
 Wh-What!? I can't believe this, you said they smelled just like cherubs in Heaven and tasted even better! Oh Hannah, Hannah, are you making fun of me? This is something I really hate, you know. I've killed for less. And I am not making fun of you.
 [TAG]
 s_Q2D
-Ohh Hannah, I love you so much I can't even tell. I'm going to make those muffins you love so much! Like those cherubs in heaven you know! Ha ha ha.
+Ohh Hannah, I love you so much I can't even tell. I'm going to make those muffins you love so much!
 [TAG]
 mission0bnotrust
-I DO NOT KNOW YOU!
+I don't know you. You're not Hannah! Get out!
 [TAG]
 !mission0bnotrust&!s_Q2D&!s_Q1D
 Well Hannah, it does not matter, I don't mind you don't say that. I'm just glad you're here.

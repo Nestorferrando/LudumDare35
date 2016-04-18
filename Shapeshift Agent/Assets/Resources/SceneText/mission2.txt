@@ -6,13 +6,16 @@ Your last work was superb, well done. It's a shame our intel was all wrong. Agai
 [next]
 Now you'll have to face a sewer rat called Scott Star. He was a disgusting clown who has decided to pollute this country with all his nauseating filth.
 [next]
-You will impersonate a luxury prostitute called Jenny Star. Man, he loves her, you've got an easy infiltration here. The only drawback is that we do not know the appearance of this woman, she is very careful hidding her identity. But worry no more! We have a drawing of her.
+You will impersonate a luxury prostitute called Jenny Star. Man, he loves her blindly, you've got an easy infiltration here. The only drawback is that we do not know the appearance of this woman, she is very careful hidding her identity. But worry no more! We have a drawing of her.
 [next]
-I found it while I was investigating him.
+I think I saw her it by chance when I was having a great... A great day with my family. So then I asked our skilled painter to do a robot sketch. Here you have.
 [next]
 Good luck out there.
 
 [TAG]
 mission2bfail
-I'm getting tired of losing agents with this missions... And you don't want to see me tired.
-You already know the mission details, so go there!
+Oh, you've arrived too soon. You know, this kind of things are the kind of things I don't like. They tire me. And you don't want to see me tired.
+[next]
+The photo is not good? Well, you are the professional, you should solve the issue.
+[next]
+You already know the mission details, so go there and finish your mission!

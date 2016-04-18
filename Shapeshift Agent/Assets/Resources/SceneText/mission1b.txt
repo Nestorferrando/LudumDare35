@@ -3,6 +3,27 @@ mission1bnotrust
 Who are you? I'm sorry but you have to leave, my wife has forbidden me to talk to strangers. She's a bit odd but I love her still
 [next]
 So please, leave
+
+[TAG]
+mission1bhairfail&!mission1bnotrust
+Dana, have you had your hair cut?
+
+[TAG]
+mission1bfacefail&!mission1bnotrust
+Your skin looks strange. What have you done to you?
+
+[TAG]
+mission1beyefail&!mission1bnotrust
+I find your eyes kind of strange
+
+[TAG]
+mission1bnosefail&!mission1bnotrust
+Your nose... bugs me
+
+[TAG]
+mission1bcontourfail&!mission1bnotrust
+Your chin is... Well, I don't know, it should be me, do not pay me attention.
+
 [TAG]
 !mission1bnotrust&mission1bfail
 [next]

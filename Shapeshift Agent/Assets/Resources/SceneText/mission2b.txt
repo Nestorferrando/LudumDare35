@@ -1,13 +1,56 @@
 [TAG]
-ALWAYS
+!mission2bnotrust
+Welcome my Star to my humble abode. I was waiting for you
 
-MISSION 2b is about to end
 [TAG]
-mission1bhairfail
-Your hair looks terrible!
+mission2bhairfail
+Oh Jenny, your hair looks so beautiful today that I'm going to die of love, my sweet love
+
 [TAG]
-mission1beyefail
-Your eye looks terrible!
+mission2bfacefail
+Oh Jenny, your skin is so special and great looking today that I'm going to die of love, my sweet love
+
 [TAG]
-mission1bmouthfail
-Your mouth looks terrible!
+mission2beyefail
+Oh Jenny, your eyes look so beautiful today that I'm going to die of love, my sweet love
+
+[TAG]
+mission2bnosefail
+Oh Jenny, your nose looks so beautiful today that I'm going to die of love, my sweet love
+
+[TAG]
+mission2bcontourfail
+Oh Jenny, your face is so beautiful today that I'm going to die of love, my sweet love
+
+[TAG]
+!mission2bnotrust
+[next]
+[question]
+[f_Q1]Have you found the special message I sent to you? I am so good at doing art, you know.
+[f_Q1A]Good at doing art? Good luck with that 
+[s_Q1B]Are you talking about that nasty picture of me? Yes, it was very useful indeed 
+[f_Q1C]No, I forgot to check my mail
+[f_Q1D]Yes but you know I don't like your dead presents my darling
+[endquestion]
+[TAG]
+f_Q1A&!mission2bnotrust
+What?! But if you always say I'm as good as an artist than as a lover!
+[TAG]
+s_Q1B&!mission2bnotrust
+I knew it! I knew it! I'm so glad!
+[TAG]
+f_Q1C&!mission2bnotrust
+That's odd. It's the first time you don't check your mail looking for my great presents
+[TAG]
+s_Q1D&!mission2bnotrust
+When are you going to stop remembering that?
+
+[TAG]
+!mission2bnotrust
+Well, sincerely I don't mind. Come in and enjoy all the things I have for you
+
+[TAG]
+mission2bnotrust
+You... You are not my Star! No other woman will replace her, do you hear me?
+[next]NO[next]NO OTHER[next]NO OTHER WOMAN![next]
+So leave me alone! I'll wait here for my Star
