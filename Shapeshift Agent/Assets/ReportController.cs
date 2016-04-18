@@ -25,6 +25,8 @@ public class ReportController : MonoBehaviour
     {
         if (previousLoadedReport) Destroy(previousLoadedReport);
 
+        GetComponent<AudioSource>().Play();
+
         Sprite sprite = Resources.Load("report"+ SingletonData.CurrentInfiltrationLevel, typeof(Sprite)) as Sprite;
         GameObject obj = new GameObject();
         obj.transform.position = new Vector3(transform.position.x, transform.position.y+ 10, transform.position.z+ 9f);

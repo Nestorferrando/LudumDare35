@@ -6,7 +6,7 @@ public class SingletonData
 
     private static Face _CurrentFace = FacesDatabase.InitialFace;
     private static int currentInfiltrationLevel;
-    private static Target _currentTarget = new Target(TargetTrust.FOUR);
+    private static Target _currentTarget = new Target(TargetTrust.FOUR,PartType.HAIR);
 
 
 
