@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
 public static class Control {
     private static int missionIndex = 0;
-    private static readonly string[] missions = { "mission0", "mission0b", "mission1", "mission1b", "mission2", "mission2b", "mission3", "mission3b", "mission4", "mission4b" };
+    private static readonly string[] missions = { "mission0", "mission0b", "mission1", "mission1b", "mission2", "mission2b"};
 
     public static HashSet<string> currentTags = new HashSet<string>();
     private static HashSet<string> traitFailTags = new HashSet<string>(); 
@@ -13,7 +14,8 @@ public static class Control {
 
     public static string nextMission() {
         if (missionIndex == missions.Length-1) {
-            return "final";
+            // DRAW FINAL
+            UnityEngine.Debug.Log("IMPLEMENT FINAL SCENE");
         }
         return missions[++missionIndex];
     }

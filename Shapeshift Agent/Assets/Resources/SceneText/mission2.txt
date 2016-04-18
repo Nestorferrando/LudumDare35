@@ -1,3 +1,14 @@
 [TAG]
-ALWAYS
-mission2
+!mission1bfail
+
+Your last work was acceptable, well done. Now you'll have to face a sewer rat called Scott Star. He was a disgusting clown who  has decided to pollute this country with all his nauseating filth.
+[next]
+You will interpret a luxury prostitute called Jenny Star. Man, he loves her, you've got an easy infiltration here. The only drawback is that we do not know the appearance of this woman, she is very careful hidding her identity. But worry no more! We have a drawing of her.
+[next]
+I found it while I was investigating him.
+[next]
+Good luck out there.
+
+[TAG]
+mission1bfail
+Our last asset was exposed and did not had luck. You'll face Scott Star acting as the luxury prostitue he loves. Do not fail.

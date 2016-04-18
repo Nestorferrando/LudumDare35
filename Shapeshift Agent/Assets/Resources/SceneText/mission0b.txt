@@ -11,18 +11,16 @@ Hannah? Is it you? Jesus, what a relief, I'm so glad you're here! One of my frie
 [endquestion]
 [TAG]
 Q1A
-No, that’s not you. C’mon, please, tell me!
+No, that's not you. C'mon, please, tell me!
 [TAG]
 Q1B
-
-Wh-What!? I can’t believe this, you said they smelled just like cherubs in Heaven and tasted even better! Oh Hannah, Hannah, are you making fun of me? This is something I really hate, you know. I’ve killed for less. And I am not making fun of you.
+Wh-What!? I can't believe this, you said they smelled just like cherubs in Heaven and tasted even better! Oh Hannah, Hannah, are you making fun of me? This is something I really hate, you know. I've killed for less. And I am not making fun of you.
 [TAG]
 Q1C
-That’s not you Hannah. I do not recognise you.
+That's not you Hannah. I do not recognise you.
 [TAG]
 Q1D
-Ohh Hannah, I love you so much I can’t even tell. I’m going to make those muffins you love so much! Like those cherubs in heaven you know! Ha ha ha.
-
+Ohh Hannah, I love you so much I can't even tell. I'm going to make those muffins you love so much! Like those cherubs in heaven you know! Ha ha ha.
 [TAG]
 !Q1D
 something
@@ -35,13 +33,13 @@ something
 [endquestion]
 [TAG]
 Q2A
-No, that’s not you. C’mon, please, tell me!
+No, that's not you. C'mon, please, tell me!
 [TAG]
 Q2B
-Wh-What!? I can’t believe this, you said they smelled just like cherubs in Heaven and tasted even better! Oh Hannah, Hannah, are you making fun of me? This is something I really hate, you know. I’ve killed for less. And I am not making fun of you.
+Wh-What!? I can't believe this, you said they smelled just like cherubs in Heaven and tasted even better! Oh Hannah, Hannah, are you making fun of me? This is something I really hate, you know. I've killed for less. And I am not making fun of you.
 [TAG]
 Q2C
-That’s not you Hannah. I do not recognise you.
+That's not you Hannah. I do not recognise you.
 [TAG]
 Q2D
-Ohh Hannah, I love you so much I can’t even tell. I’m going to make those muffins you love so much! Like those cherubs in heaven you know! Ha ha ha.
+Ohh Hannah, I love you so much I can't even tell. I'm going to make those muffins you love so much! Like those cherubs in heaven you know! Ha ha ha.

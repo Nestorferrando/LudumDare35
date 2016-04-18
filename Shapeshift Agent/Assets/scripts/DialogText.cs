@@ -31,7 +31,7 @@ public class DialogText : MonoBehaviour {
     private int questionIndex = -1;
     private GameObject dialogueCanvas;
     private Button[] buttons = new Button[4];
-    private TrustController trust;
+    private bool fading = false;
 
     public void Awake() {
         sound = gameObject.GetComponent<AudioSource>();
@@ -51,7 +51,7 @@ public class DialogText : MonoBehaviour {
         if (Control.infiltration) {
             GameObject.Find("TargetTrust").SetActive(true);
             GameObject.Find("bg").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("bg");
-            trust = GameObject.Find("TrustBar").GetComponent<TrustController>();
+            //trust = GameObject.Find("TrustBar").GetComponent<TrustController>();
             calcTrust();
         } else {
             GameObject.Find("TargetTrust").SetActive(false);
@@ -79,7 +79,7 @@ public class DialogText : MonoBehaviour {
     }
 
     public void Update() {
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(0) && !fading) {
             handleDialog();
         }
     }
@@ -359,6 +359,7 @@ public class DialogText : MonoBehaviour {
     }
 
     private IEnumerator fadeIn() {
+        fading = true;
         SpriteRenderer sr = GameObject.Find("black_layer").GetComponent<SpriteRenderer>();
         float a = sr.color.a;
         while (a < 1f) {
@@ -368,10 +369,12 @@ public class DialogText : MonoBehaviour {
             Camera.main.GetComponent<AudioSource>().volume -= a/4f;
             yield return new WaitForSeconds(0.01f);
         }
-        goToNextScene();    
+        goToNextScene();
+        fading = false;
     }
 
     private IEnumerator fadeOut() {
+        fading = true;
         SpriteRenderer sr = GameObject.Find("black_layer").GetComponent<SpriteRenderer>();
         float a = sr.color.a;
         while (a > 0f) {
@@ -381,6 +384,7 @@ public class DialogText : MonoBehaviour {
             yield return new WaitForSeconds(0.01f);
         }
         //goToNextScene();
+        fading = false;
     }
 
     private void calcTrust() {
@@ -390,6 +394,6 @@ public class DialogText : MonoBehaviour {
     }
 
     private bool hasTrust() {
-        return false;
+        return true;
     }
 }
