@@ -30,6 +30,7 @@ public class CloseReportLayer : MonoBehaviour
 
     {
         reportLayer.transform.localScale = new Vector3(0, 0, 0);
+        if (GetComponent<AudioSource>()!=null)
         GetComponent<AudioSource>().Play();
     }
 
