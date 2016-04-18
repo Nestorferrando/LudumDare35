@@ -7,7 +7,7 @@ public class title2script : MonoBehaviour {
 
     private Text text;
 
-    private String targetText = " A noir infiltration game \n" +
+    private String targetText = "A noir infiltration game \n\n\n" +
                                 "Agent: Amanda L. Pawlson \n" +
                                 "Codename: Praying mantis \n" +
                                 "Current status: Exposed. Supression within next twenty days" +
