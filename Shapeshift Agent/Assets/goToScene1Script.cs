@@ -1,11 +1,15 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class goToScene1Script : MonoBehaviour {
+public class goToScene1Script : MonoBehaviour
+{
 
-	// Use this for initialization
-	void Start () {
+    public String targetScene = "gameStage1";
+
+    // Use this for initialization
+    void Start () {
 	
 	}
 	
@@ -17,7 +21,7 @@ public class goToScene1Script : MonoBehaviour {
     void OnMouseDown()
     {
         if (Time.realtimeSinceStartup>3.0f)
-        SceneManager.LoadScene("gameStage1");
+        SceneManager.LoadScene(targetScene);
     }
 
 }
