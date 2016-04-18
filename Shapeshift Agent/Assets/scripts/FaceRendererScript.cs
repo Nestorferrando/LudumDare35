@@ -22,6 +22,7 @@ public class FaceRendererScript : MonoBehaviour
 
     private Face PreviousFace;
     public float scale = 0.5f;
+    public int orderInLayer = 1;
 
     private List<FacePartRemoval> shitToBeRemoved;
     private List<FacePartRemoval> shitRecentlyAdded;
@@ -162,7 +163,7 @@ public class FaceRendererScript : MonoBehaviour
             rend.color = ColorUtils.getSkinColor(face.SkinColor);
             if (previousFace != null) rend.color = new Color(rend.color.r,rend.color.g,rend.color.b,0);
             obj.transform.parent = gameObject.transform;
-            rend.sortingOrder = 1;
+            rend.sortingOrder = orderInLayer;
             if (previousFace != null) shitToBeRemoved.Add(new FacePartRemoval(currentContour,obj, true));
             currentContour = obj;
 
@@ -174,7 +175,7 @@ public class FaceRendererScript : MonoBehaviour
             rend.sprite = sprite;
             rend.color = ColorUtils.getSkinColor(face.SkinColor);
             obj.transform.parent = gameObject.transform;
-            rend.sortingOrder = 1;
+            rend.sortingOrder = orderInLayer;
             if (previousFace != null) rend.color = new Color(rend.color.r, rend.color.g, rend.color.b, 0);
             if (previousFace != null) obj.transform.Translate(0, 0, 20);
             if (previousFace != null) shitToBeRemoved.Add(new FacePartRemoval(currentContourBack, obj, true));
@@ -192,7 +193,7 @@ public class FaceRendererScript : MonoBehaviour
             obj.transform.position = new Vector3(transform.position.x, transform.position.y, -0.2f);
             obj.transform.localScale = new Vector3(scale, scale, 1);
             obj.transform.parent = gameObject.transform;
-            rend.sortingOrder = 1;
+            rend.sortingOrder = orderInLayer;
             if (previousFace != null) rend.color = new Color(rend.color.r, rend.color.g, rend.color.b, 0);
             if (previousFace != null) obj.transform.Translate(0, 0, 20);
             if (previousFace != null) shitToBeRemoved.Add(new FacePartRemoval(currentHair, obj, true));
@@ -211,7 +212,7 @@ public class FaceRendererScript : MonoBehaviour
             obj.transform.localScale = new Vector3(scale, scale, 1);
             if (previousFace != null) obj.transform.localScale = new Vector3(0, 0, 1);
             obj.transform.parent = gameObject.transform;
-            rend.sortingOrder = 1;
+            rend.sortingOrder = orderInLayer;
             if (previousFace != null) obj.transform.Translate(0, 0, 20);
             if (previousFace != null) shitToBeRemoved.Add(new FacePartRemoval(currentLeftEye, obj, false));
             currentLeftEye = obj;
@@ -230,7 +231,7 @@ public class FaceRendererScript : MonoBehaviour
             obj.transform.localScale = new Vector3(scale, scale, 1);
             if (previousFace != null) obj.transform.localScale = new Vector3(0, 0, 1);
             obj.transform.parent = gameObject.transform;
-            rend.sortingOrder = 1;
+            rend.sortingOrder = orderInLayer;
             if (previousFace != null) obj.transform.Translate(0, 0, 20);
             if (previousFace != null) shitToBeRemoved.Add(new FacePartRemoval(currentRightEye, obj, false));
             currentRightEye = obj;
@@ -249,7 +250,7 @@ public class FaceRendererScript : MonoBehaviour
             obj.transform.localScale = new Vector3(scale, scale, 1);
             if (previousFace != null) obj.transform.localScale = new Vector3(0, 0, 1);
             obj.transform.parent = gameObject.transform;
-            rend.sortingOrder = 1;
+            rend.sortingOrder = orderInLayer;
             if (previousFace != null) obj.transform.Translate(0, 0, 20);
             if (previousFace != null) shitToBeRemoved.Add(new FacePartRemoval(currentMouth, obj, false));
             currentMouth = obj;
@@ -266,7 +267,7 @@ public class FaceRendererScript : MonoBehaviour
             obj.transform.localScale = new Vector3(scale, scale, 1);
             if (previousFace != null) obj.transform.localScale = new Vector3(0, 0, 1);
             obj.transform.parent = gameObject.transform;
-            rend.sortingOrder = 1;
+            rend.sortingOrder = orderInLayer;
             if (previousFace != null) obj.transform.Translate(0, 0, 20);
             if (previousFace != null) shitToBeRemoved.Add(new FacePartRemoval(currentNose, obj, false));
             currentNose = obj;

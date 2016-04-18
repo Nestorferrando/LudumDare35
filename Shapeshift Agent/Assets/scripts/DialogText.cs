@@ -47,12 +47,12 @@ public class DialogText : MonoBehaviour {
         disableButtons();
 
         if (Control.infiltration) {
-            GameObject.Find("TargetTrust").SetActive(true);
+          //  GameObject.Find("TargetTrust").SetActive(true);
             GameObject.Find("bg").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("bg");
             trust = GameObject.Find("TrustBar").GetComponent<TrustController>();
             calcTrust();
         } else {
-            GameObject.Find("TargetTrust").SetActive(false);
+          //  GameObject.Find("TargetTrust").SetActive(false);
             GameObject.Find("bg").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("bg-noir-1");
         }
     }
