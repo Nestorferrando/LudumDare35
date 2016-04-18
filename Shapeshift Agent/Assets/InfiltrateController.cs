@@ -31,6 +31,8 @@ public class InfiltrateController : MonoBehaviour
 
     private void goToScene3()
     {
+        Control.nextMission();
+        Control.infiltration = true;
         SceneManager.LoadScene("gameStage1");
     }
 

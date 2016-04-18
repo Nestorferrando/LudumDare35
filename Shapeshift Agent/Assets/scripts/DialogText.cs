@@ -11,8 +11,6 @@ using Random = UnityEngine.Random;
 public class DialogText : MonoBehaviour {
     [Range(.0001f, .1f)]
     public float wait = .005f;
-    public static List<string> currentTags = new List<string>();
-    public static string missionFileName = "mission1";
 
     private string str;
     private AudioSource sound;
@@ -38,8 +36,6 @@ public class DialogText : MonoBehaviour {
         sound = gameObject.GetComponent<AudioSource>();
         currentQuestion.tags = new List<string>();
         currentQuestion.answers = new List<string>();
-
-        defineMissionText(missionFileName);
         
         dialogueCanvas = GameObject.Find("DialogueCanvas");
         buttons[0] = dialogueCanvas.transform.FindChild("Button0").GetComponent<Button>();
@@ -48,113 +44,32 @@ public class DialogText : MonoBehaviour {
         buttons[3] = dialogueCanvas.transform.FindChild("Button3").GetComponent<Button>();
 
         disableButtons();
-    }
 
-    public void defineMissionText(string fileName) {
-        missionFileName = fileName;
+        if (Control.infiltration) {
+            GameObject.Find("TargetTrust").SetActive(true);
+            GameObject.Find("bg").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("bg");
+        } else {
+            GameObject.Find("TargetTrust").SetActive(false);
+            GameObject.Find("bg").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("bg-noir-1");
+        }
     }
 
     public void Start() {
         //generateBG();
-        currentTags.Add("ALWAYS");
+        Control.currentTags.Add("ALWAYS");
         text = gameObject.GetComponent<Text>();
         text.text = "";
-        missionText = Resources.Load<TextAsset>("SceneText/" + missionFileName).text;
+        Debug.Log(Control.currentMission());
+        missionText = Resources.Load<TextAsset>("SceneText/" + Control.currentMission()).text;
         run = processText();
+        displayNextDialog();
     }
 
-
-    private bool checkTags(string tag) {
-        if (tag[0] != '!') {
-            foreach (string t in currentTags) {
-                //Debug.Log(t + " =?= " + tag + " | " + t==tag + " | " + t.Length + " " + tag.Length);
-                if (t == tag) {
-                    return true;
-                }
-            }
-            return false;
-        }
-        else {
-            tag = tag.Substring(1);
-            foreach (string t in currentTags) {
-                //Debug.Log(t + " =?= " + tag + " | " + t==tag + " | " + t.Length + " " + tag.Length);
-                if (t == tag) {
-                    return false;
-                }
-            }
-            return true;
+    public void Update() {
+        if (Input.GetMouseButtonDown(0)) {
+            handleDialog();
         }
     }
-
-    private string preprocessText(string text) {
-        string[] lines = text.Split('\n');
-        bool questionFound = false;
-        string res = "";
-
-        for (int i = 0; i < lines.Length; ++i) {
-            //Debug.Log("lines["+i+"] = " + lines[i] + " " + lines[i].Length);
-            if (lines[i].Substring(0, lines[i].Length-1) == "[question]") {
-                questionFound = true;
-                Question q = new Question();
-                q.answers = new List<string>();
-                q.tags = new List<string>();
-                questions.Add(q);
-                res += "[question]" + ++questionIndex + "\n";
-                continue;
-            }
-            else if (lines[i].Substring(0, lines[i].Length - 1) == "[endquestion]") {
-                questionFound = false;
-                continue;
-            }
-
-            if (questionFound) {
-                string s = lines[i];
-                int index = s.IndexOf(']');
-                string tag = s.Substring(1, index-1);
-                string info = s.Substring(index+1);
-                //Debug.Log("tag = " + tag + " question = " + question);
-                questions.Last().answers.Add(info);
-                questions.Last().tags.Add(tag);
-                //Debug.Log("> tag = " + questions.Last().tags.Last() + " question = " + questions.Last().questions.Last());
-            } else {
-                res += lines[i] + '\n';
-            }
-
-        }
-
-        return res;
-    }
-
-    private IEnumerator processText() {
-        string text = missionText;
-        text = preprocessText(text);
-        
-        //Debug.Log("text = " + text);
-
-        string[] sep_tag = { "[TAG]" };
-        string[] sep_nextLine = { "[next]" };
-        foreach (string s in text.Split(sep_tag, StringSplitOptions.RemoveEmptyEntries)) {
-            string[] lineText = s.Split('\n');
-            string tagFound = lineText[1].Substring(0, lineText[1].Length-1);
-
-            if (checkTags(tagFound)) {
-
-                string res = "";
-                for (int i = 2; i < lineText.Length; ++i) {
-                    res += lineText[i] + '\n';
-                }
-
-                foreach (string t in res.Split(sep_nextLine, StringSplitOptions.RemoveEmptyEntries)) {
-                    queuedText.Enqueue(t);
-                    yield return null;
-                }
-            }
-        }
-
-        yield break;
-    }
-
-   
 
     private void displayNextDialog() {
         StopAllCoroutines();
@@ -211,12 +126,6 @@ public class DialogText : MonoBehaviour {
         }
     }
 
-    public void Update() {
-        if (Input.GetMouseButtonDown(0)) {
-            handleDialog();
-        }
-    }
-
     private void handleDialog() {
         switch (currentState) {
             case State.DRAWALL:
@@ -265,6 +174,117 @@ public class DialogText : MonoBehaviour {
         //}
     }
 
+
+
+
+
+
+
+
+
+
+    private bool checkTags(string tag) {
+        if (tag[0] != '!') {
+            foreach (string t in Control.currentTags) {
+                //Debug.Log(t + " =?= " + tag + " | " + t==tag + " | " + t.Length + " " + tag.Length);
+                if (t == tag) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        else {
+            tag = tag.Substring(1);
+            foreach (string t in Control.currentTags) {
+                //Debug.Log(t + " =?= " + tag + " | " + t==tag + " | " + t.Length + " " + tag.Length);
+                if (t == tag) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+
+    private string preprocessText(string text) {
+        string[] lines = text.Split('\n');
+        bool questionFound = false;
+        string res = "";
+
+        for (int i = 0; i < lines.Length; ++i) {
+            //Debug.Log("lines["+i+"] = " + lines[i] + " " + lines[i].Length);
+            if (lines[i].Substring(0, lines[i].Length - 1) == "[question]") {
+                questionFound = true;
+                Question q = new Question();
+                q.answers = new List<string>();
+                q.tags = new List<string>();
+                questions.Add(q);
+                res += "[question]" + ++questionIndex + "\n";
+                continue;
+            }
+            else if (lines[i].Substring(0, lines[i].Length - 1) == "[endquestion]") {
+                questionFound = false;
+                continue;
+            }
+
+            if (questionFound) {
+                string s = lines[i];
+                int index = s.IndexOf(']');
+                string tag = s.Substring(1, index - 1);
+                string info = s.Substring(index + 1);
+                //Debug.Log("tag = " + tag + " question = " + question);
+                questions.Last().answers.Add(info);
+                questions.Last().tags.Add(tag);
+                //Debug.Log("> tag = " + questions.Last().tags.Last() + " question = " + questions.Last().questions.Last());
+            }
+            else {
+                res += lines[i] + '\n';
+            }
+
+        }
+
+        return res;
+    }
+
+    private IEnumerator processText() {
+        string text = missionText;
+        text = preprocessText(text);
+
+        //Debug.Log("text = " + text);
+
+        string[] sep_tag = { "[TAG]" };
+        string[] sep_nextLine = { "[next]" };
+        foreach (string s in text.Split(sep_tag, StringSplitOptions.RemoveEmptyEntries)) {
+            string[] lineText = s.Split('\n');
+            string tagFound = lineText[1].Substring(0, lineText[1].Length - 1);
+
+            if (checkTags(tagFound)) {
+
+                string res = "";
+                for (int i = 2; i < lineText.Length; ++i) {
+                    res += lineText[i] + '\n';
+                }
+
+                foreach (string t in res.Split(sep_nextLine, StringSplitOptions.RemoveEmptyEntries)) {
+                    queuedText.Enqueue(t);
+                    yield return null;
+                }
+            }
+        }
+
+        yield break;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
     private void disableButtons() {
         dialogueCanvas.SetActive(false);
     }
@@ -292,7 +312,7 @@ public class DialogText : MonoBehaviour {
     private void answerSelected(int n) {
         Debug.Log(n + " button selected!");
         Debug.Log(currentQuestion.tags.ElementAt(n+1));
-        currentTags.Add(currentQuestion.tags.ElementAt(n+1));
+        Control.currentTags.Add(currentQuestion.tags.ElementAt(n+1));
         currentState = State.NEXT;
         disableButtons();
         handleDialog();
@@ -304,7 +324,14 @@ public class DialogText : MonoBehaviour {
     }
 
     private void goToNextScene() {
-        SceneManager.LoadScene("gameStage2");
+        if (Control.infiltration) {
+            Control.infiltration = false;
+            // if trust is nice:
+            Control.nextMission();
+            SceneManager.LoadScene("gameStage1");
+        } else {
+            SceneManager.LoadScene("gameStage2");
+        }
     }
 
     private IEnumerator fadeIn() {
