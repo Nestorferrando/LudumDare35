@@ -36,7 +36,6 @@ public class SingletonData
 
         int trust =(int)Mathf.Max(0, Mathf.Ceil(5 - error.TotalError));
         _currentTarget = new Target((TargetTrust)trust);
-        Debug.Log(trust);
 
     }
 
