@@ -7,11 +7,11 @@ public class title2script : MonoBehaviour {
 
     private Text text;
 
-    private String targetText = " A noir infiltration game \n " +
-                                "Subject: Amanda lalala \n " +
-                                "Range: Senior Spy \n " +
-                                "Current status: weak, suspension quite probable before next month " +
-                                "\n \n \n click to continue...";
+    private String targetText = " A noir infiltration game \n" +
+                                "Agent: Amanda L. Pawlson \n" +
+                                "Codename: Praying mantis \n" +
+                                "Current status: Exposed. Supression within next twenty days" +
+                                "\n\n\n click to continue...";
     private int letterCount = 0;
 
     // Use this for initialization
@@ -39,7 +39,7 @@ public class title2script : MonoBehaviour {
 
         if (targetText.Length > 0)
         {
-            if (nextLetter == '\n')
+            if (nextLetter == '\n' || nextLetter == '.')
                 Invoke("addLetter", 0.3f);
             else
             Invoke("addLetter",0.065f);

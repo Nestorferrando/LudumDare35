@@ -7,7 +7,7 @@ public class title1script : MonoBehaviour {
 
     private Text text;
 
-    private String targetText = " THE OTHERS";
+    private String targetText = " THE OTHER WOMAN";
     private int letterCount = 0;
 
     // Use this for initialization
