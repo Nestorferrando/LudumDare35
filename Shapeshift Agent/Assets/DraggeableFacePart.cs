@@ -57,7 +57,9 @@ void OnMouseUp()
         obj = null;
     }
 
-    Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
+        bigFaceRenderer.GetComponent<AudioSource>().Play();
+
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
 
     float differenceX =     bigFaceRenderer.transform.position.x - mousePos.x-mouseDiff.x;
     float differenceY = bigFaceRenderer.transform.position.y - mousePos.y-mouseDiff.y;
