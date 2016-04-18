@@ -14,6 +14,11 @@ public class BlackLayerController : MonoBehaviour
         set { layerActive = value; }
     }
 
+    public void Awake() {
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        sr.color = new Vector4(sr.color.r, sr.color.g, sr.color.b, 1f);
+    }
+
     // Use this for initialization
 	void Start () {
 	

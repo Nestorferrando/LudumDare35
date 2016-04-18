@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Schema;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -58,21 +59,9 @@ public class DialogText : MonoBehaviour {
         //generateBG();
         currentTags.Add("ALWAYS");
         text = gameObject.GetComponent<Text>();
-        string s = text.text;
         text.text = "";
         missionText = Resources.Load<TextAsset>("SceneText/" + missionFileName).text;
         run = processText();
-    }
-
-
-
-    private void generateBG() { // TODO: use img
-        Rect r = gameObject.GetComponent<RectTransform>().rect;
-        GameObject g = new GameObject("DialogBG");
-        SpriteRenderer sr = g.AddComponent<SpriteRenderer>();
-        Texture2D tex = new Texture2D(1, 1);
-        Sprite s = Sprite.Create(tex, new Rect(0, 0, 2, 2), Vector2.zero, 1);
-        sr.sprite = s;
     }
 
 
@@ -171,9 +160,12 @@ public class DialogText : MonoBehaviour {
     private void displayNextDialog() {
         StopAllCoroutines();
         text.text = "";
-        run.MoveNext();
-        
-        
+        if (!run.MoveNext()) {
+            currentState = State.NONE;
+            launchEmptyConversationAction();
+        }
+
+
         if (queuedText.Count > 0) {
             lastPeak = queuedText.Dequeue();
 
@@ -193,10 +185,6 @@ public class DialogText : MonoBehaviour {
                 currentState = State.DRAWALL;
                 StartCoroutine(animateText(lastPeak));
             }
-            
-        } else if (queuedText.Count == 0) {
-            currentState = State.NONE;
-            launchEmptyConversationAction();
         }
     }
 
@@ -209,8 +197,9 @@ public class DialogText : MonoBehaviour {
                 RectTransform r = buttons[i-1].gameObject.GetComponent<RectTransform>();
                 float originalWidth = r.sizeDelta.x;
                 float width = currentQuestion.answers[i].Length * 12.5f;
-                r.sizeDelta = new Vector2(width, r.rect.height);
-                r.position = new Vector2(r.position.x - originalWidth - width, r.position.y);
+                //rectTransform.offsetMax = new Vector2(rectTransform.offsetMax.x, top);
+                //r.sizeDelta = new Vector2(width, r.rect.height);
+                //r.position = new Vector2(r.position.x - originalWidth - width, r.position.y);
             }
         }
         StartCoroutine(animateText(s));
@@ -312,5 +301,23 @@ public class DialogText : MonoBehaviour {
 
     private void launchEmptyConversationAction() {
         Debug.Log("NEXT SCENE!");
+        StartCoroutine(fadeIn());
+    }
+
+    private void goToNextScene() {
+        SceneManager.LoadScene("gameStage2");
+    }
+
+    private IEnumerator fadeIn() {
+        SpriteRenderer sr = GameObject.Find("black_layer").GetComponent<SpriteRenderer>();
+        float a = sr.color.a;
+        while (a < 1f) {
+            a += 5f * Time.deltaTime;
+            sr.color = new Vector4(sr.color.r, sr.color.g, sr.color.b, a);
+
+            Camera.main.GetComponent<AudioSource>().volume -= a/2f;
+            yield return new WaitForSeconds(0.1f);
+        }
+        goToNextScene();    
     }
 }
