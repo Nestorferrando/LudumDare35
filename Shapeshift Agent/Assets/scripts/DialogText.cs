@@ -32,7 +32,7 @@ public class DialogText : MonoBehaviour {
     private List<Question> questions = new List<Question>();
     private int questionIndex = -1;
     private GameObject dialogueCanvas;
-    private Button[] buttons;
+    private Button[] buttons = new Button[4];
 
     public void Awake() {
         sound = gameObject.GetComponent<AudioSource>();
@@ -40,12 +40,14 @@ public class DialogText : MonoBehaviour {
         currentQuestion.answers = new List<string>();
 
         defineMissionText("mission1");
-        /*
+        
         dialogueCanvas = GameObject.Find("DialogueCanvas");
         buttons[0] = dialogueCanvas.transform.FindChild("Button0").GetComponent<Button>();
         buttons[1] = dialogueCanvas.transform.FindChild("Button1").GetComponent<Button>();
         buttons[2] = dialogueCanvas.transform.FindChild("Button2").GetComponent<Button>();
-        buttons[3] = dialogueCanvas.transform.FindChild("Button3").GetComponent<Button>();*/
+        buttons[3] = dialogueCanvas.transform.FindChild("Button3").GetComponent<Button>();
+
+        disableButtons();
     }
 
     public void defineMissionText(string fileName) {
@@ -178,6 +180,7 @@ public class DialogText : MonoBehaviour {
             int i = lastPeak.IndexOf("[question]");
             if (i > 0) {
                 currentState = State.QUESTION;
+                enableButtons();
                 string n_str = "";
                 i += "[question]".Length;
                 while (i < lastPeak.Length && lastPeak[i] != '\n') {
@@ -202,6 +205,13 @@ public class DialogText : MonoBehaviour {
         String s = "";
         for (int i = 0; i < currentQuestion.answers.Count; ++i) {
             s += currentQuestion.answers[i] + "\n";
+            if (i != 0) {
+                RectTransform r = buttons[i-1].gameObject.GetComponent<RectTransform>();
+                float originalWidth = r.sizeDelta.x;
+                float width = currentQuestion.answers[i].Length * 12.5f;
+                r.sizeDelta = new Vector2(width, r.rect.height);
+                r.position = new Vector2(r.position.x - originalWidth - width, r.position.y);
+            }
         }
         StartCoroutine(animateText(s));
     }
@@ -255,7 +265,6 @@ public class DialogText : MonoBehaviour {
             
         }
     }
-    
 
     private void drawNewText(string str, char c, int i) {
         text.text = str;
@@ -270,6 +279,10 @@ public class DialogText : MonoBehaviour {
 
     private void disableButtons() {
         dialogueCanvas.SetActive(false);
+    }
+
+    private void enableButtons() {
+        dialogueCanvas.SetActive(true);
     }
 
     public void DialogButton0Pressed() {
@@ -293,6 +306,7 @@ public class DialogText : MonoBehaviour {
         Debug.Log(currentQuestion.tags.ElementAt(n+1));
         currentTags.Add(currentQuestion.tags.ElementAt(n+1));
         currentState = State.NEXT;
+        disableButtons();
         handleDialog();
     }
 
