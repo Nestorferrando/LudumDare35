@@ -13,6 +13,13 @@ public class FaceRendererScript : MonoBehaviour
     private GameObject currentNose;
     private GameObject currentRightEye;
 
+    public FacePartLocation leftEyeInfo;
+    public FacePartLocation rightEyeInfo;
+    public FacePartLocation noseInfo;
+    public FacePartLocation mouthInfo;
+
+
+
     private Face PreviousFace;
     public float scale = 0.5f;
 
@@ -31,7 +38,8 @@ public class FaceRendererScript : MonoBehaviour
         SpriteRenderer rend = obj.AddComponent(typeof(SpriteRenderer)) as SpriteRenderer;
         rend.sprite = sprite;
         obj.transform.parent = gameObject.transform;
- 
+
+        checkForNewFace();
     }
 
 
@@ -40,14 +48,7 @@ public class FaceRendererScript : MonoBehaviour
     {
 
 
-
-
-        if (PreviousFace != SingletonData.CurrentFace && shitToBeRemoved.Count==0 && shitRecentlyAdded.Count==0)
-        {
-            renderFace(PreviousFace, SingletonData.CurrentFace);
-            
-            PreviousFace = SingletonData.CurrentFace;
-        }
+        checkForNewFace();
         //------------------------------
 
         List<FacePartRemoval> readyToRemove = new List<FacePartRemoval>();
@@ -116,6 +117,16 @@ public class FaceRendererScript : MonoBehaviour
             shitRecentlyAdded.Remove(child);
         }
         //------------------------------
+    }
+
+    private void checkForNewFace()
+    {
+        if (PreviousFace != SingletonData.CurrentFace && shitToBeRemoved.Count == 0 && shitRecentlyAdded.Count == 0)
+        {
+            renderFace(PreviousFace, SingletonData.CurrentFace);
+
+            PreviousFace = SingletonData.CurrentFace;
+        }
     }
 
     private void renderFace(Face previousFace, Face face)
@@ -204,6 +215,7 @@ public class FaceRendererScript : MonoBehaviour
             if (previousFace != null) obj.transform.Translate(0, 0, 20);
             if (previousFace != null) shitToBeRemoved.Add(new FacePartRemoval(currentLeftEye, obj, false));
             currentLeftEye = obj;
+            leftEyeInfo = new FacePartLocation(face.LeftEye.Id,obj.transform.position);
 
         }
 
@@ -222,6 +234,7 @@ public class FaceRendererScript : MonoBehaviour
             if (previousFace != null) obj.transform.Translate(0, 0, 20);
             if (previousFace != null) shitToBeRemoved.Add(new FacePartRemoval(currentRightEye, obj, false));
             currentRightEye = obj;
+            rightEyeInfo = new FacePartLocation(face.RightEye.Id, obj.transform.position);
         }
 
         if (previousFace == null || !face.Mouth.Equals(previousFace.Mouth))
@@ -240,6 +253,7 @@ public class FaceRendererScript : MonoBehaviour
             if (previousFace != null) obj.transform.Translate(0, 0, 20);
             if (previousFace != null) shitToBeRemoved.Add(new FacePartRemoval(currentMouth, obj, false));
             currentMouth = obj;
+            mouthInfo = new FacePartLocation(face.Mouth.Id, obj.transform.position);
         }
         if (previousFace == null || !face.Nose.Equals(previousFace.Nose))
         {
@@ -256,6 +270,7 @@ public class FaceRendererScript : MonoBehaviour
             if (previousFace != null) obj.transform.Translate(0, 0, 20);
             if (previousFace != null) shitToBeRemoved.Add(new FacePartRemoval(currentNose, obj, false));
             currentNose = obj;
+            noseInfo = new FacePartLocation(face.Nose.Id, obj.transform.position);
         }
     }
 }
