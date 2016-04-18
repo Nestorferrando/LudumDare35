@@ -132,6 +132,8 @@ public class FaceRendererScript : MonoBehaviour
     private void renderFace(Face previousFace, Face face)
 
     {
+
+        SingletonData.updateTargetTrustToInitial();
         /*
         CorrespondenceError error = CorrespondenceUtils.GetFaceError(face,FacesDatabase.Subject1);
   Debug.Log("--------");
