@@ -21,14 +21,15 @@ Your nose... Whatever!
 [TAG]
 mission0bcontourfail&!mission1bnotrust
 Your chin is... Well, I don't know, it should be me, do not pay me attention
-
+[TAG]
+!mission0bnotrust
 [next]
 [question]
-[f_Q1] I've been so worried Hannah! Please, say it!
+[f_Q1] I've been so worried Hannah! Please, say it! Tell me that thing I love to hear from you!
 [f_Q1A] I wish I remember
 [f_Q1B] I really do not like your small chocolate muffins. Not at all
 [f_Q1C] I love you
-[s_Q1D] You smell like a nasty pig, motherfucker
+[s_Q1D] You smell like a nasty, big and fat PIG!
 [endquestion]
 [TAG]
 f_Q1A&!mission0bnotrust
@@ -41,12 +42,12 @@ f_Q1C&!mission0bnotrust
 That's not you Hannah. I do not recognise you.
 [TAG]
 s_Q1D&!mission0bnotrust
-Ohh Hannah, I love you so much I can't even tell. I'm going to make those muffins you love so much! Like those cherubs in heaven you know! Ha ha ha.
+Ohh Hannah, I love you so much I can't even tell. I'm going to make those muffins you love so much!
 [TAG]
 !s_Q1D&!mission0bnotrust
-something
+[next]
 [question]
-[f_Q2] C'mon baby, you should not treat me like this.
+[f_Q2] C'mon baby, you should not treat me like this. Tell me that thing I love to hear from you!
 [f_Q2A] I really cannot remember
 [f_Q2B] The muffins was all true
 [f_Q2C] I still love you
@@ -63,4 +64,4 @@ mission0bnotrust
 I don't know you. You're not Hannah! Get out!
 [TAG]
 !mission0bnotrust&!s_Q2D&!s_Q1D
-Well Hannah, it does not matter, I don't mind you don't say that. I'm just glad you're here.
+Well Hannah, it does not matter, I don't mind you don't say what I want you to say. I'm just glad you're here. Come in, you are more than welcome!
