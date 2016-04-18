@@ -7,7 +7,7 @@ using System.Text;
 
   public class CorrespondenceUtils
   {
-      private static float ERROR_PER_PIXEL = 1/6.0f;
+      private static float ERROR_PER_PIXEL = 1/3.0f;
 
 
       public static CorrespondenceError GetFaceError(Face idealFace, Face realFace)
@@ -203,7 +203,7 @@ using System.Text;
         int idealIndex = (int) idealColor;
         int realIndex = (int) chosenColor;
 
-        if (Math.Abs(idealIndex - realIndex) == 0) return 0;
+        if (Math.Abs(idealIndex - realIndex) <2) return 0;
         return 1;
     }
 
@@ -214,7 +214,7 @@ using System.Text;
         int idealIndex = (int)idealColor;
         int realIndex = (int)chosenColor;
 
-        if (Math.Abs(idealIndex - realIndex) == 0) return 0;
+        if (Math.Abs(idealIndex - realIndex) <2) return 0;
         return 1;
     }
 }

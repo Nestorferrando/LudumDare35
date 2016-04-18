@@ -32,6 +32,7 @@ public class DialogText : MonoBehaviour {
     private GameObject dialogueCanvas;
     private Button[] buttons = new Button[4];
     private bool fading = false;
+    private TrustController trust;
 
     public void Awake() {
         sound = gameObject.GetComponent<AudioSource>();
@@ -51,8 +52,7 @@ public class DialogText : MonoBehaviour {
         if (Control.infiltration) {
             GameObject.Find("TargetTrust").SetActive(true);
             GameObject.Find("bg").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("bg");
-            //trust = GameObject.Find("TrustBar").GetComponent<TrustController>();
-            calcTrust();
+            trust = GameObject.Find("TrustBar").GetComponent<TrustController>();
         } else {
             GameObject.Find("TargetTrust").SetActive(false);
             GameObject.Find("bg").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("bg-noir-1");
@@ -74,6 +74,11 @@ public class DialogText : MonoBehaviour {
             Debug.Log(t);
         }
         Debug.Log(":::::::::::::::::::::::::::");
+
+        if (Control.infiltration) {
+            SingletonData.updateTargetTrustToInitial();
+            calcTrust();
+        }
 
         StartCoroutine(fadeOut());
     }
@@ -327,6 +332,7 @@ public class DialogText : MonoBehaviour {
         Debug.Log(n + " button selected!");
         Debug.Log(currentQuestion.tags.ElementAt(n+1));
         Control.currentTags.Add(currentQuestion.tags.ElementAt(n+1));
+        calcTrust();
         currentState = State.NEXT;
         disableButtons();
         handleDialog();
@@ -390,10 +396,15 @@ public class DialogText : MonoBehaviour {
     private void calcTrust() {
         //Control.addTraitFailTag(Control.TraitFail.HAIR);
         //Control.addTraitFailTag(Control.TraitFail.EYE);
-        Debug.Log("INFILTRATION " + SingletonData.CurrentInfiltrationLevel);
+        int n = Control.numFailsCurrentMission();
+        for (int i = 0; i < n; ++i) {
+            SingletonData.CurrentTarget = SingletonData.CurrentTarget.decreaseConfidence();
+        }
+
+        Debug.Log("CALC TRUST REPORT: " + SingletonData.CurrentTarget.Trust);
     }
 
     private bool hasTrust() {
-        return true;
+        return SingletonData.CurrentTarget.Trust != TargetTrust.ZERO;
     }
 }

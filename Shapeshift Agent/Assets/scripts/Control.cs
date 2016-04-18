@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 
 public static class Control {
@@ -55,6 +56,16 @@ public static class Control {
                 Control.traitFailTags.Add(Control.currentMission() + "mouthfail");
                 break;
         }
+    }
+
+    public static int numFailsCurrentMission() {
+        int count = 0;
+        foreach (string s in currentTags) {
+            if (s.Contains("f_")) {
+                ++count;
+            }
+        }
+        return count;
     }
 
     public static void eraseTraitFailTag() {

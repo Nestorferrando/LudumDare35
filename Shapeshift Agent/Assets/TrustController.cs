@@ -40,10 +40,10 @@ public class TrustController : MonoBehaviour
 
     private void updateTrustGraphics(Target currentTarget)
     {
-        switch (currentTarget.Confidence)
+        switch (currentTarget.Trust)
 
         {
-            case TargetConfidence.ZERO:
+            case TargetTrust.ZERO:
                 title.GetComponent<SpriteRenderer>().color = new Color(1f, 0.0f, 0, 1);
                 bar0.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
                 bar1.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
@@ -52,7 +52,7 @@ public class TrustController : MonoBehaviour
                 bar4.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
                 break;
 
-            case TargetConfidence.ONE:
+            case TargetTrust.ONE:
                 title.GetComponent<SpriteRenderer>().color = new Color(1f, 0.0f, 0, 1);
                 bar0.GetComponent<SpriteRenderer>().color = new Color(1f, 0.0f, 0, 1);
                 bar1.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
@@ -61,7 +61,7 @@ public class TrustController : MonoBehaviour
                 bar4.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
                 break;
 
-            case TargetConfidence.TWO:
+            case TargetTrust.TWO:
                 title.GetComponent<SpriteRenderer>().color = new Color(1f, 0.5f, 0, 1);
                 bar0.GetComponent<SpriteRenderer>().color = new Color(1f, 0.5f, 0, 1);
                 bar1.GetComponent<SpriteRenderer>().color = new Color(1f, 0.5f, 0, 1);
@@ -70,7 +70,7 @@ public class TrustController : MonoBehaviour
                 bar4.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
                 break;
 
-            case TargetConfidence.THREE:
+            case TargetTrust.THREE:
                 title.GetComponent<SpriteRenderer>().color = new Color(1f, 0.5f, 0, 1);
                 bar0.GetComponent<SpriteRenderer>().color = new Color(1f, 0.5f, 0, 1);
                 bar1.GetComponent<SpriteRenderer>().color = new Color(1f, 0.5f, 0, 1);
@@ -79,7 +79,7 @@ public class TrustController : MonoBehaviour
                 bar4.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
                 break;
 
-            case TargetConfidence.FOUR:
+            case TargetTrust.FOUR:
                 title.GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, 1);
                 bar0.GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, 1);
                 bar1.GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, 1);
@@ -88,7 +88,7 @@ public class TrustController : MonoBehaviour
                 bar4.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
                 break;
 
-            case TargetConfidence.FIVE:
+            case TargetTrust.FIVE:
                 title.GetComponent<SpriteRenderer>().color = new Color(0,1,0,1);
                 bar0.GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, 1);
                 bar1.GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, 1);

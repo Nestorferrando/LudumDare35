@@ -3,26 +3,26 @@ ALWAYS
 Hannah? Is it you? Jesus, what a relief, I'm so glad you're here! One of my friends told me you've had a terrible accident! Oh Hannah, I love you so much! Please, please tell me what you always say every time I'm afraid!
 [next]
 [question]
-[Q1] I've been so worried Hannah! Please, say it!
-[Q1A] I wish I remember
-[Q1B] I really do not like your small chocolate muffins. Not at all
-[Q1C] I love you
-[Q1D] You smell like a nasty pig, motherfucker
+[f_Q1] I've been so worried Hannah! Please, say it!
+[f_Q1A] I wish I remember
+[f_Q1B] I really do not like your small chocolate muffins. Not at all
+[f_Q1C] I love you
+[s_Q1D] You smell like a nasty pig, motherfucker
 [endquestion]
 [TAG]
-Q1A
+f_Q1A
 No, that's not you. C'mon, please, tell me!
 [TAG]
-Q1B
+f_Q1B
 Wh-What!? I can't believe this, you said they smelled just like cherubs in Heaven and tasted even better! Oh Hannah, Hannah, are you making fun of me? This is something I really hate, you know. I've killed for less. And I am not making fun of you.
 [TAG]
-Q1C
+f_Q1C
 That's not you Hannah. I do not recognise you.
 [TAG]
-Q1D
+s_Q1D
 Ohh Hannah, I love you so much I can't even tell. I'm going to make those muffins you love so much! Like those cherubs in heaven you know! Ha ha ha.
 [TAG]
-!Q1D
+!s_Q1D
 something
 [question]
 [Q2] C'mon baby, you should not treat me like this.

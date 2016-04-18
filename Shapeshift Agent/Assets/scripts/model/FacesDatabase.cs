@@ -77,5 +77,18 @@ using System.Text;
         );
 
         public static Face InitialFace = Subject1;
-}
+
+        public static Face getFaceFromLevel(int currentInfiltrationLevel)
+        {
+            switch (currentInfiltrationLevel)
+            {
+            case 0: return Subject1;
+            case 1: return Subject2;
+            case 2: return Subject3;
+            case 3: return Subject4;
+            case 4: return Subject5;
+        }
+            return null;
+        }
+    }
 
