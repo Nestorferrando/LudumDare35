@@ -52,7 +52,9 @@ public class DialogText : MonoBehaviour {
             GameObject.Find("TargetTrust").SetActive(true);
             GameObject.Find("bg").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("bg");
             trust = GameObject.Find("TrustBar").GetComponent<TrustController>();
+            GameObject.Find("gameStage1").GetComponent<AudioSource>().Play();
         } else {
+            GameObject.Find("Main Camera").GetComponent<AudioSource>().Play();
             GameObject.Find("TargetTrust").SetActive(false);
             GameObject.Find("bg").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("bg-noir-1");
         }
@@ -381,7 +383,17 @@ public class DialogText : MonoBehaviour {
             a += 0.75f * Time.deltaTime;
             sr.color = new Vector4(sr.color.r, sr.color.g, sr.color.b, a);
 
-            Camera.main.GetComponent<AudioSource>().volume -= a/4f;
+
+            //Camera.main.GetComponent<AudioSource>().volume -= a/4f;
+            if (Control.infiltration)
+            {
+                GameObject.Find("gameStage1").GetComponent<AudioSource>().volume -= a / 4f;
+            }
+            else
+            {
+                GameObject.Find("Main Camera").GetComponent<AudioSource>().volume -= a / 4f;
+            }
+
             yield return new WaitForSeconds(0.01f);
         }
         goToNextScene();
