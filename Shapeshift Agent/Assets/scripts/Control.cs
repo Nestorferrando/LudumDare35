@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Text;
 
 public static class Control {
-    private static int missionIndex = 2;
+    private static int missionIndex = 0;
     private static readonly string[] missions = { "mission0", "mission0b", "mission1", "mission1b", "mission2", "mission2b"};
 
     public static HashSet<string> currentTags = new HashSet<string>();
@@ -38,7 +38,7 @@ public static class Control {
         return missions[--missionIndex];
     }
 
-    public enum TraitFail { HAIR, FACECOLOR, EYE, NOSE, MOUTH, NOTRUST }
+    public enum TraitFail { HAIR, FACECOLOR, EYE, NOSE, MOUTH, CONTOUR, NOTRUST }
     public static void addTraitFailTag(TraitFail t) {
         switch(t) {
             case TraitFail.HAIR:
@@ -64,6 +64,10 @@ public static class Control {
             case TraitFail.NOTRUST:
                 Control.currentTags.Add(Control.currentMission() + "notrust");
                 Control.traitFailTags.Add(Control.currentMission() + "notrust");
+                break;
+            case TraitFail.CONTOUR:
+                Control.currentTags.Add(Control.currentMission() + "contour");
+                Control.traitFailTags.Add(Control.currentMission() + "contour");
                 break;
         }
     }

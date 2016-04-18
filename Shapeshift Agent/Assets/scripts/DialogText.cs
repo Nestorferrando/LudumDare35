@@ -3,7 +3,6 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Xml.Schema;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -69,7 +68,7 @@ public class DialogText : MonoBehaviour {
         missionText = Resources.Load<TextAsset>("SceneText/" + Control.currentMission()).text;
         run = processText();
         if (Control.infiltration) {
-            SingletonData.updateTargetTrustToInitial();
+            initTrust();
             calcTrust();
         }
         displayNextDialog();
@@ -412,6 +411,35 @@ public class DialogText : MonoBehaviour {
         }
         //goToNextScene();
         fading = false;
+    }
+
+    private void initTrust() {
+        SingletonData.updateTargetTrustToInitial();
+        switch(SingletonData.CurrentTarget.ConcernType) {
+            case PartType.CONTOUR:
+                Control.addTraitFailTag(Control.TraitFail.CONTOUR);
+                break;
+            case PartType.NOSE:
+                Control.addTraitFailTag(Control.TraitFail.NOSE);
+                break;
+            case PartType.MOUTH:
+                Control.addTraitFailTag(Control.TraitFail.MOUTH);
+                break;
+            case PartType.HAIR:
+                Control.addTraitFailTag(Control.TraitFail.HAIR);
+                break;
+            case PartType.LEFT_EYE:
+                Control.addTraitFailTag(Control.TraitFail.EYE);
+                break;
+            case PartType.RIGHT_EYE:
+                Control.addTraitFailTag(Control.TraitFail.EYE);
+                break;
+            case PartType.SKIN:
+                Control.addTraitFailTag(Control.TraitFail.FACECOLOR);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
     }
 
     private void calcTrust() {
