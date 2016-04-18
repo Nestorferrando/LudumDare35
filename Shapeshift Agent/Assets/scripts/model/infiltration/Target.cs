@@ -8,10 +8,12 @@ using System.Text;
    {
 
        private TargetTrust _trust= TargetTrust.FIVE;
+       private PartType concernType;
 
-       public Target(TargetTrust trust)
+       public Target(TargetTrust trust, PartType concernType)
        {
-           this._trust = trust;
+           _trust = trust;
+           this.concernType = concernType;
        }
 
        public TargetTrust Trust
@@ -19,12 +21,17 @@ using System.Text;
            get { return _trust; }
        }
 
+       public PartType ConcernType
+       {
+           get { return concernType; }
+       }
+
 
        public Target decreaseConfidence()
        {
 
         TargetTrust trust = (TargetTrust) (((int) _trust) - 1);
-        return new Target(trust);
+        return new Target(trust, concernType);
        }
 
    }

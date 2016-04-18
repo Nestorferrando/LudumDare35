@@ -33,10 +33,15 @@ public class SingletonData
     {
         CorrespondenceError error= CorrespondenceUtils.GetFaceError(
             FacesDatabase.getFaceFromLevel(currentInfiltrationLevel), _CurrentFace);
-
-        int trust =(int)Mathf.Max(0, Mathf.Ceil(5 - error.TotalError));
-        _currentTarget = new Target((TargetTrust)trust);
-
+        int trust = (int)Mathf.Max(0, Mathf.Ceil(5 - error.TotalError));
+        if (error.DisplacementError > error.BadSelectedShapes)
+        {
+            _currentTarget = new Target((TargetTrust) trust, error.WorstDisplacedPart);
+        }
+        else
+        {
+            _currentTarget = new Target((TargetTrust)trust, error.PartWithWorstShape);
+        }
     }
 
 }
