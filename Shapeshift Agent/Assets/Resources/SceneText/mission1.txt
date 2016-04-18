@@ -1,13 +1,12 @@
 [TAG]
-ALWAYS
+!mission1bfail
 Your last mission was a huge success, congratulations
 [next]I'll be quick here: you're becoming a black woman called Dana Huston we know she moved to this country with her husband five years ago and we suspect this man is related to a series of political crimes we must stop at any cost
 [next]
 We count on you to do this job
 [next]
 Do not mess it all up
-
 [TAG]
 mission1bfail
-I'm becoming to getting tired of losing agents with this missions... And you don't want to see me tired.
-You already know the mission details, so go there!
+Hello again. I'll speak plainly: We've messed it up. We were not prepared to that password system, I'm sorry. We've investigated about it and we know the one they use, so take note:
+[next] The password is: THE LIGHT HURTS YOU
