@@ -18,7 +18,6 @@ public class DialogText : MonoBehaviour {
     private Text text;
     private string lastPeak = "";
     private string missionText = "";
-    private const int max_lines = 3;
     private Question currentQuestion;
     private IEnumerator run;
     private enum State { NONE, DRAWALL, NEXT, QUESTION }
@@ -50,11 +49,11 @@ public class DialogText : MonoBehaviour {
         sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1f);
 
         if (Control.infiltration) {
-          //  GameObject.Find("TargetTrust").SetActive(true);
+            GameObject.Find("TargetTrust").SetActive(true);
             GameObject.Find("bg").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("bg");
             trust = GameObject.Find("TrustBar").GetComponent<TrustController>();
         } else {
-          //  GameObject.Find("TargetTrust").SetActive(false);
+            GameObject.Find("TargetTrust").SetActive(false);
             GameObject.Find("bg").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("bg-noir-1");
         }
     }
@@ -67,6 +66,10 @@ public class DialogText : MonoBehaviour {
         Debug.Log(Control.currentMission());
         missionText = Resources.Load<TextAsset>("SceneText/" + Control.currentMission()).text;
         run = processText();
+        if (Control.infiltration) {
+            SingletonData.updateTargetTrustToInitial();
+            calcTrust();
+        }
         displayNextDialog();
 
         Debug.Log("TAGS:::::::::::::::::");
@@ -74,11 +77,6 @@ public class DialogText : MonoBehaviour {
             Debug.Log(t);
         }
         Debug.Log(":::::::::::::::::::::::::::");
-
-        if (Control.infiltration) {
-            SingletonData.updateTargetTrustToInitial();
-            calcTrust();
-        }
 
         StartCoroutine(fadeOut());
     }
@@ -198,10 +196,7 @@ public class DialogText : MonoBehaviour {
 
 
 
-
-
-
-    private bool checkTags(string tag) {
+    private bool checkSingleTag(string tag) {
         if (tag[0] != '!') {
             foreach (string t in Control.currentTags) {
                 //Debug.Log(t + " =?= " + tag + " | " + t==tag + " | " + t.Length + " " + tag.Length);
@@ -220,6 +215,20 @@ public class DialogText : MonoBehaviour {
                 }
             }
             return true;
+        }
+    }
+
+
+    private bool checkTags(string tag) {
+        string[] split = tag.Split('&');
+        if (split.Length == 0) {
+            return checkSingleTag(tag);
+        } else {
+            bool b = true;
+            foreach (string s in split) {
+                b = b && checkSingleTag(s);
+            }
+            return b;
         }
     }
 
@@ -400,7 +409,10 @@ public class DialogText : MonoBehaviour {
         for (int i = 0; i < n; ++i) {
             SingletonData.CurrentTarget = SingletonData.CurrentTarget.decreaseConfidence();
         }
-
+        if (SingletonData.CurrentTarget.Trust == TargetTrust.ZERO) {
+            //Control.currentTags.Add(Control.currentMission() + "notrust");
+            Control.addTraitFailTag(Control.TraitFail.NOTRUST);
+        }
         Debug.Log("CALC TRUST REPORT: " + SingletonData.CurrentTarget.Trust);
     }
 

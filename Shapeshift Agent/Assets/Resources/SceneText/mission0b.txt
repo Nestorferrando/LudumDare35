@@ -1,5 +1,5 @@
 [TAG]
-ALWAYS
+!mission0bnotrust
 Hannah? Is it you? Jesus, what a relief, I'm so glad you're here! One of my friends told me you've had a terrible accident! Oh Hannah, I love you so much! Please, please tell me what you always say every time I'm afraid!
 [next]
 [question]
@@ -10,36 +10,39 @@ Hannah? Is it you? Jesus, what a relief, I'm so glad you're here! One of my frie
 [s_Q1D] You smell like a nasty pig, motherfucker
 [endquestion]
 [TAG]
-f_Q1A
+f_Q1A&!mission0bnotrust
 No, that's not you. C'mon, please, tell me!
 [TAG]
-f_Q1B
+f_Q1B&!mission0bnotrust
 Wh-What!? I can't believe this, you said they smelled just like cherubs in Heaven and tasted even better! Oh Hannah, Hannah, are you making fun of me? This is something I really hate, you know. I've killed for less. And I am not making fun of you.
 [TAG]
-f_Q1C
+f_Q1C&!mission0bnotrust
 That's not you Hannah. I do not recognise you.
 [TAG]
-s_Q1D
+s_Q1D&!mission0bnotrust
 Ohh Hannah, I love you so much I can't even tell. I'm going to make those muffins you love so much! Like those cherubs in heaven you know! Ha ha ha.
 [TAG]
-!s_Q1D
+!s_Q1D&!mission0bnotrust
 something
 [question]
-[Q2] C'mon baby, you should not treat me like this.
-[Q2A] I really cannot remember
-[Q2B] The muffins was all true
-[Q2C] I still love you
-[Q2D] You STINK
+[f_Q2] C'mon baby, you should not treat me like this.
+[f_Q2A] I really cannot remember
+[f_Q2B] The muffins was all true
+[f_Q2C] I still love you
+[s_Q2D] You STINK
 [endquestion]
 [TAG]
-Q2A
+f_Q2A
 No, that's not you. C'mon, please, tell me!
 [TAG]
-Q2B
+f_Q2B
 Wh-What!? I can't believe this, you said they smelled just like cherubs in Heaven and tasted even better! Oh Hannah, Hannah, are you making fun of me? This is something I really hate, you know. I've killed for less. And I am not making fun of you.
 [TAG]
-Q2C
+f_Q2C
 That's not you Hannah. I do not recognise you.
 [TAG]
-Q2D
+s_Q2D
 Ohh Hannah, I love you so much I can't even tell. I'm going to make those muffins you love so much! Like those cherubs in heaven you know! Ha ha ha.
+[TAG]
+mission0bnotrust
+I DO NOT KNOW YOU!

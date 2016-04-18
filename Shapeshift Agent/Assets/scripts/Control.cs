@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -32,7 +33,7 @@ public static class Control {
         return missions[--missionIndex];
     }
 
-    public enum TraitFail { HAIR, FACECOLOR, EYE, NOSE, MOUTH }
+    public enum TraitFail { HAIR, FACECOLOR, EYE, NOSE, MOUTH, NOTRUST }
     public static void addTraitFailTag(TraitFail t) {
         switch(t) {
             case TraitFail.HAIR:
@@ -54,6 +55,10 @@ public static class Control {
             case TraitFail.MOUTH:
                 Control.currentTags.Add(Control.currentMission() + "mouthfail");
                 Control.traitFailTags.Add(Control.currentMission() + "mouthfail");
+                break;
+            case TraitFail.NOTRUST:
+                Control.currentTags.Add(Control.currentMission() + "notrust");
+                Control.traitFailTags.Add(Control.currentMission() + "notrust");
                 break;
         }
     }
