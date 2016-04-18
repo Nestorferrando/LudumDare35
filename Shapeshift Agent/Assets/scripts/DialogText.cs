@@ -50,11 +50,11 @@ public class DialogText : MonoBehaviour {
         sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1f);
 
         if (Control.infiltration) {
-            GameObject.Find("TargetTrust").SetActive(true);
+          //  GameObject.Find("TargetTrust").SetActive(true);
             GameObject.Find("bg").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("bg");
             trust = GameObject.Find("TrustBar").GetComponent<TrustController>();
         } else {
-            GameObject.Find("TargetTrust").SetActive(false);
+          //  GameObject.Find("TargetTrust").SetActive(false);
             GameObject.Find("bg").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("bg-noir-1");
         }
     }
