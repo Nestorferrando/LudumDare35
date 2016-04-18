@@ -1,8 +1,11 @@
 [TAG]
 ALWAYS
-Welcome back, agent. I'll be quick here: you're becoming a black woman here. We know she moved to this country with her husband five years ago and we suspect this man is related to a series of political crimes we must stop at any cost.
+Your last mission was a huge success, congratulations
+[next]I'll be quick here: you're becoming a black woman called Dana Huston we know she moved to this country with her husband five years ago and we suspect this man is related to a series of political crimes we must stop at any cost
 [next]
-We count on you to do this job.
+We count on you to do this job
+[next]
+Do not mess it all up
 
 [TAG]
 mission1bfail

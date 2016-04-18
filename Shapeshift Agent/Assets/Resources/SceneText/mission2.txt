@@ -1,7 +1,9 @@
 [TAG]
-!mission1bfail
+!mission2bfail
 
-Your last work was acceptable, well done. Now you'll have to face a sewer rat called Scott Star. He was a disgusting clown who  has decided to pollute this country with all his nauseating filth.
+Your last work was superb, well done. It's a shame our intel was all wrong and we sent you to become the killer herself and not the husband of the killer. Sorry for that.
+[next]
+Now you'll have to face a sewer rat called Scott Star. He was a disgusting clown who  has decided to pollute this country with all his nauseating filth.
 [next]
 You will interpret a luxury prostitute called Jenny Star. Man, he loves her, you've got an easy infiltration here. The only drawback is that we do not know the appearance of this woman, she is very careful hidding her identity. But worry no more! We have a drawing of her.
 [next]

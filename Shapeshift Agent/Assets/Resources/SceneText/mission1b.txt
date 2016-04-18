@@ -1,13 +1,58 @@
 [TAG]
-ALWAYS
-
-MISSION 1b is about to end
+mission1bnotrust
+Who are you? I'm sorry but you have to leave, my wife has forbidden me to talk to strangers. She's a bit odd but I love her still
+[next]
+So please, leave
 [TAG]
-mission1bhairfail
-Your hair looks terrible!
+!mission1bnotrust&mission1bfail
+[question]
+[f_Q2] Oh, hello Dana! The last time your password worked great! I'll ask for it again! What's the password?
+[s_Q2A] THE LIGHT HURTS YOU
+[f_Q2B] CREATE LIFE
+[f_Q2C] COMPANION
+[f_Q2D] BUILD YOUR WAY OUT
+[endquestion]
 [TAG]
-mission1beyefail
-Your eye looks terrible!
+[s_Q2A]
+Oh you did it great! come in, come in!
 [TAG]
-mission1bmouthfail
-Your mouth looks terrible!
+!mission1bnotrust&!mission1bfail
+[next]
+[question]
+[f_Q2] Dana, is it you? You know I think this is absurd but... Well it does not matter, what's the password?
+[f_Q2A] The password? Really Johnny? I forgot
+[f_Q2B] You gotta be kidding me
+[s_Q2C] You are the only password I need oh my little Johnny
+[f_Q2D] There is no such password, it's yet to be defined.
+[endquestion]
+[TAG]
+f_Q2A&!mission1bnotrust&!mission1bfail
+You are playing with me to check I'm really serious about this. Well, today I am.
+[TAG]
+f_Q2B&!mission1bnotrust&!mission1bfail
+Nop
+[TAG]
+s_Q2C&!mission1bnotrust&!mission1bfail
+That's not what you said the last time I let you pass without the password
+[TAG]
+f_Q2D&!mission1bnotrust&!mission1bfail
+No, I can remember you punching my face at each syllabe you pronounced
+[TAG]
+!mission1bnotrust&!mission1bfail
+[question]
+[f_Q2] I'll ask for it once again. Say the password.
+[f_Q2A] GALILEO
+[f_Q2B] LUDUM DARE
+[f_Q2C] SHAPESHIFTER
+[f_Q2D] I WILL KILL YOU
+[endquestion]
+[TAG]
+f_Q2&!mission1bfail
+I can't believe I am not going to let you enter home just because this stupid password of yours[next]
+but babe, this are your rules. So you can't be here. Leave.
+[question]
+[TAG]
+mission1bnotrust
+I'm sorry, you'll have to leave. You surely are not my wife. I won't speak about this with her if you do not appear again.
+[next]
+Get lost.

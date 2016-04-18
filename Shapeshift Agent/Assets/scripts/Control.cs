@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Text;
 
 public static class Control {
-    private static int missionIndex = 0;
+    private static int missionIndex = 2;
     private static readonly string[] missions = { "mission0", "mission0b", "mission1", "mission1b", "mission2", "mission2b"};
 
     public static HashSet<string> currentTags = new HashSet<string>();

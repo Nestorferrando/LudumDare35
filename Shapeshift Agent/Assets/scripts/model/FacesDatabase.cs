@@ -76,7 +76,7 @@ using System.Text;
         SkinColor.LIGHT_BROWN
         );
 
-        public static Face InitialFace = Protagonist;
+        public static Face InitialFace = Subject2;
 
         public static Face getFaceFromLevel(int currentInfiltrationLevel)
         {
