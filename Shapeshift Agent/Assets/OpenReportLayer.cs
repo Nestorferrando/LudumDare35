@@ -25,9 +25,13 @@ public class OpenReportLayer : MonoBehaviour {
 
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnMouseEnter()
     {
+            GetComponent<SpriteRenderer>().color = new Color(0.8f, 0.8f,1 , 1);
+    }
 
+    void OnMouseExit()
+    {
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
     }
 }

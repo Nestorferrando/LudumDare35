@@ -46,7 +46,18 @@ public class DraggeableFacePart : MonoBehaviour
 
 
 
-void OnMouseUp()
+    void OnMouseEnter()
+    {
+        if (!justAlreadyDropped)
+        GetComponent<SpriteRenderer>().color= new Color(0.7f,0.7f,0,1);
+    }
+
+    void OnMouseExit()
+    {
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+    }
+
+    void OnMouseUp()
 {
 
     if (obj == null) return;
@@ -57,7 +68,9 @@ void OnMouseUp()
         obj = null;
     }
 
-    Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
+        bigFaceRenderer.GetComponent<AudioSource>().Play();
+
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
 
     float differenceX =     bigFaceRenderer.transform.position.x - mousePos.x-mouseDiff.x;
     float differenceY = bigFaceRenderer.transform.position.y - mousePos.y-mouseDiff.y;
