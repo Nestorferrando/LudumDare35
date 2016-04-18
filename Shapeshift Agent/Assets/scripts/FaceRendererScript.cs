@@ -243,12 +243,12 @@ public class FaceRendererScript : MonoBehaviour
             sprite = Resources.Load("mouth" + face.Mouth.Id, typeof (Sprite)) as Sprite;
             obj = new GameObject();
             rend = obj.AddComponent(typeof (SpriteRenderer)) as SpriteRenderer;
-            obj.transform.position = new Vector3(transform.position.x + face.Mouth.OffsetX*scale/width,
-                transform.position.y + face.Mouth.OffsetY*scale/height, -0.4f);
-            if (previousFace != null) obj.transform.localScale = new Vector3(0, 0, 1);
             rend.sprite = sprite;
-            obj.transform.parent = gameObject.transform;
+            obj.transform.position = new Vector3(transform.position.x + face.Mouth.OffsetX * scale / width,
+                transform.position.y + face.Mouth.OffsetY * scale / height, -0.3f);
             obj.transform.localScale = new Vector3(scale, scale, 1);
+            if (previousFace != null) obj.transform.localScale = new Vector3(0, 0, 1);
+            obj.transform.parent = gameObject.transform;
             rend.sortingOrder = 1;
             if (previousFace != null) obj.transform.Translate(0, 0, 20);
             if (previousFace != null) shitToBeRemoved.Add(new FacePartRemoval(currentMouth, obj, false));
@@ -259,14 +259,14 @@ public class FaceRendererScript : MonoBehaviour
         {
             sprite = Resources.Load("nose" + face.Nose.Id, typeof (Sprite)) as Sprite;
             obj = new GameObject();
-            rend = obj.AddComponent(typeof (SpriteRenderer)) as SpriteRenderer;
-            obj.transform.position = new Vector3(transform.position.x + face.Nose.OffsetX*scale/width,
-                transform.position.y + face.Nose.OffsetY*scale/height, -0.4f);
-            if (previousFace != null)   obj.transform.localScale = new Vector3(0, 0, 1);
+            rend = obj.AddComponent(typeof(SpriteRenderer)) as SpriteRenderer;
             rend.sprite = sprite;
-            rend.sortingOrder = 1;
-            obj.transform.parent = gameObject.transform;
+            obj.transform.position = new Vector3(transform.position.x + face.Nose.OffsetX * scale / width,
+                transform.position.y + face.Nose.OffsetY * scale / height, -0.3f);
             obj.transform.localScale = new Vector3(scale, scale, 1);
+            if (previousFace != null) obj.transform.localScale = new Vector3(0, 0, 1);
+            obj.transform.parent = gameObject.transform;
+            rend.sortingOrder = 1;
             if (previousFace != null) obj.transform.Translate(0, 0, 20);
             if (previousFace != null) shitToBeRemoved.Add(new FacePartRemoval(currentNose, obj, false));
             currentNose = obj;
