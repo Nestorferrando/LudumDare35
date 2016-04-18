@@ -51,3 +51,8 @@ vaya tontito estas hecho
 [TAG]
 ALWAYS
 [next] a tope de torpecito
+
+mission0: photo and description
+--------------------------
+mission1: corrupted photo, description
+

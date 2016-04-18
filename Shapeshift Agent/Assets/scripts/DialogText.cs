@@ -45,6 +45,8 @@ public class DialogText : MonoBehaviour {
         buttons[3] = dialogueCanvas.transform.FindChild("Button3").GetComponent<Button>();
 
         disableButtons();
+        SpriteRenderer sr = GameObject.Find("black_layer").GetComponent<SpriteRenderer>();
+        sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1f);
 
         if (Control.infiltration) {
             GameObject.Find("TargetTrust").SetActive(true);
@@ -72,6 +74,8 @@ public class DialogText : MonoBehaviour {
             Debug.Log(t);
         }
         Debug.Log(":::::::::::::::::::::::::::");
+
+        StartCoroutine(fadeOut());
     }
 
     public void Update() {
@@ -365,6 +369,18 @@ public class DialogText : MonoBehaviour {
             yield return new WaitForSeconds(0.01f);
         }
         goToNextScene();    
+    }
+
+    private IEnumerator fadeOut() {
+        SpriteRenderer sr = GameObject.Find("black_layer").GetComponent<SpriteRenderer>();
+        float a = sr.color.a;
+        while (a > 0f) {
+            a -= 0.75f * Time.deltaTime;
+            sr.color = new Vector4(sr.color.r, sr.color.g, sr.color.b, a);
+            //Camera.main.GetComponent<AudioSource>().volume += a / 4f;
+            yield return new WaitForSeconds(0.01f);
+        }
+        //goToNextScene();
     }
 
     private void calcTrust() {

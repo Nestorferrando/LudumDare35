@@ -1,7 +1,13 @@
 [TAG]
-ALWAYS
-MISSION 1 is about to end
+!mission1bfail
+
+Your last work was acceptable, well done. Now you'll have to face a sewer rat called Scott Star. He was a disgusting clown who  has decided to pollute this country with all his nauseating filth.
+[next]
+You will interpret a luxury prostitute called Jenny Star. Man, he loves her, you've got an easy infiltration here.
+Your mission is to know about his gang hideout. Then you can do whatever you want to.
+[next]
+Good luck out there.
+
 [TAG]
-mission1fail
-You've failed!
-try again!
+mission1bfail
+Our last agent was exposed and did not had luck. You'll face Scott Star and you will act as a luxury prostitue he loves. Do not fail.

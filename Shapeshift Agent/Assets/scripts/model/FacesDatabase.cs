@@ -9,6 +9,16 @@ using System.Text;
 
 
 
+    public static Face Subject1 = new Face(
+            new FacePart(PartType.LEFT_EYE, 2, -7.77f, 7.77f),
+            new FacePart(PartType.RIGHT_EYE, 2, 6.75f, 8.30f),
+            new FacePart(PartType.NOSE, 1, 0.386f, -2.74f),
+            new FacePart(PartType.MOUTH, 1, 1.38f, -15.54f),
+            new FacePart(PartType.CONTOUR, 0, 0, 0),
+            new FacePart(PartType.HAIR, 3, 0, 0),
+            HairColor.BLONDE,
+            SkinColor.WHITE
+            );
 
     public static Face Subject2 = new Face(
             new FacePart(PartType.LEFT_EYE, 5, -8.6f, 5.46f),
@@ -19,17 +29,6 @@ using System.Text;
             new FacePart(PartType.HAIR, 0, 0, 0),
             HairColor.BROWN,
             SkinColor.BLACK
-            );
-
-    public static Face Subject1 = new Face(
-            new FacePart(PartType.LEFT_EYE, 2, -7.77f, 7.77f),
-            new FacePart(PartType.RIGHT_EYE, 2, 6.75f, 8.30f),
-            new FacePart(PartType.NOSE, 1, 0.386f, -2.74f),
-            new FacePart(PartType.MOUTH, 1, 1.38f, -15.54f),
-            new FacePart(PartType.CONTOUR, 0, 0, 0),
-            new FacePart(PartType.HAIR, 3, 0, 0),
-            HairColor.BLONDE,
-            SkinColor.WHITE
             );
 
     public static Face Subject3 = new Face(
@@ -79,6 +78,6 @@ using System.Text;
         );
 
 
-    public static Face SampleFace = Subject5;
+    public static Face SampleFace = Protagonist;
     }
 
