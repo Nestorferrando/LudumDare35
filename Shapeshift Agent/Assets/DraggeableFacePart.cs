@@ -46,7 +46,18 @@ public class DraggeableFacePart : MonoBehaviour
 
 
 
-void OnMouseUp()
+    void OnMouseEnter()
+    {
+        if (!justAlreadyDropped)
+        GetComponent<SpriteRenderer>().color= new Color(0.7f,0.7f,0,1);
+    }
+
+    void OnMouseExit()
+    {
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+    }
+
+    void OnMouseUp()
 {
 
     if (obj == null) return;

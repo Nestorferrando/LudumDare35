@@ -16,6 +16,16 @@ public class ClickableFacePart : MonoBehaviour
 	
 	}
 
+    void OnMouseEnter()
+    {
+            GetComponent<SpriteRenderer>().color = new Color(0.7f, 0.7f, 0, 1);
+    }
+
+    void OnMouseExit()
+    {
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+    }
+
     void OnMouseDown()
     {
 
