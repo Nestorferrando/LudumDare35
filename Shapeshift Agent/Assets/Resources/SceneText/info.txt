@@ -1,0 +1,53 @@
+TAGS:
+missionXfail
+
+missionXnosefail
+missionXeyefail
+missionXmouthfail
+mixxionXhairfail
+missionXcolorfail // facecolor
+
+------------ ejemplo de formato:
+
+
+[TAG]
+ALWAYS
+Prueba loca
+[next]
+[question]
+[QUESTION] esto que es?
+[SUCCESS] quiero SUCCESS
+[B] no quiero NADA
+[endquestion]
+[TAG]
+SUCCESS
+Esto lo peta, nano
+menudo exitazo
+[next]
+a tope de exito
+[TAG]
+FAILURE
+buabubaubauba que mal
+menudo [next] loser
+[TAG]
+ALWAYS
+p a s a t e l o  b i e n
+
+estoy muy contento y por eso canto así lalalalalalalal lalala la la lalala la la lalala
+Hola que tal,[next] 
+voy a hacerte unas preguntas:
+[next]
+[question]
+[QUESTION] te crees listo?
+[CLEVER] yes
+[SILLY] no
+[endquestion]
+[TAG]
+CLEVER
+así que te crees listo, eh?
+[TAG]
+SILLY
+vaya tontito estas hecho
+[TAG]
+ALWAYS
+[next] a tope de torpecito

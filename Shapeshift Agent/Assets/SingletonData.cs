@@ -4,16 +4,16 @@ using System.Collections;
 public class SingletonData
 {
 
-    private static Face _CurrrentFace = FacesDatabase.Subject5;
+    private static Face _CurrentFace = FacesDatabase.Subject5;
     private static int currentInfiltrationLevel;
     private static Target _currentTarget = new Target(TargetConfidence.FOUR);
 
 
 
-    public static Face CurrrentFace
+    public static Face CurrentFace
     {
-        get { return _CurrrentFace; }
-        set { _CurrrentFace = value; }
+        get { return _CurrentFace; }
+        set { _CurrentFace = value; }
     }
 
     public static int CurrentInfiltrationLevel

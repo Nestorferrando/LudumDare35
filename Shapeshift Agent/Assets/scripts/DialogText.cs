@@ -31,6 +31,7 @@ public class DialogText : MonoBehaviour {
     private int questionIndex = -1;
     private GameObject dialogueCanvas;
     private Button[] buttons = new Button[4];
+    private TrustController trust;
 
     public void Awake() {
         sound = gameObject.GetComponent<AudioSource>();
@@ -48,6 +49,8 @@ public class DialogText : MonoBehaviour {
         if (Control.infiltration) {
             GameObject.Find("TargetTrust").SetActive(true);
             GameObject.Find("bg").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("bg");
+            trust = GameObject.Find("TrustBar").GetComponent<TrustController>();
+            calcTrust();
         } else {
             GameObject.Find("TargetTrust").SetActive(false);
             GameObject.Find("bg").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("bg-noir-1");
@@ -63,6 +66,12 @@ public class DialogText : MonoBehaviour {
         missionText = Resources.Load<TextAsset>("SceneText/" + Control.currentMission()).text;
         run = processText();
         displayNextDialog();
+
+        Debug.Log("TAGS:::::::::::::::::");
+        foreach(var t in Control.currentTags) {
+            Debug.Log(t);
+        }
+        Debug.Log(":::::::::::::::::::::::::::");
     }
 
     public void Update() {
@@ -212,6 +221,7 @@ public class DialogText : MonoBehaviour {
 
         for (int i = 0; i < lines.Length; ++i) {
             //Debug.Log("lines["+i+"] = " + lines[i] + " " + lines[i].Length);
+            if (lines[i] == "") continue;
             if (lines[i].Substring(0, lines[i].Length - 1) == "[question]") {
                 questionFound = true;
                 Question q = new Question();
@@ -327,9 +337,19 @@ public class DialogText : MonoBehaviour {
         if (Control.infiltration) {
             Control.infiltration = false;
             // if trust is nice:
-            Control.nextMission();
-            SceneManager.LoadScene("gameStage1");
+            Debug.Log("trust = " + hasTrust());
+            if (hasTrust()) {
+                Control.nextMission();
+                SceneManager.LoadScene("gameStage1");
+            } else {
+                Control.currentTags.Add(Control.currentMission() + "fail");
+                Control.eraseTraitFailTag();
+                Control.prevMission();
+                SceneManager.LoadScene("gameStage1");
+            }
         } else {
+            Control.infiltration = true;
+            Control.nextMission();
             SceneManager.LoadScene("gameStage2");
         }
     }
@@ -345,5 +365,15 @@ public class DialogText : MonoBehaviour {
             yield return new WaitForSeconds(0.01f);
         }
         goToNextScene();    
+    }
+
+    private void calcTrust() {
+        //Control.addTraitFailTag(Control.TraitFail.HAIR);
+        //Control.addTraitFailTag(Control.TraitFail.EYE);
+        Debug.Log("INFILTRATION " + SingletonData.CurrentInfiltrationLevel);
+    }
+
+    private bool hasTrust() {
+        return false;
     }
 }

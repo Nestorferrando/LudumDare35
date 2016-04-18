@@ -23,10 +23,10 @@ public class ClickableFacePart : MonoBehaviour
 
         {
             case PartType.CONTOUR:
-                SingletonData.CurrrentFace = SingletonData.CurrrentFace.updateContour(new FacePart(PartType.CONTOUR, partID, 0, 0));
+                SingletonData.CurrentFace = SingletonData.CurrentFace.updateContour(new FacePart(PartType.CONTOUR, partID, 0, 0));
                 break;
             case PartType.HAIR:
-                SingletonData.CurrrentFace = SingletonData.CurrrentFace.updateHair(new FacePart(PartType.HAIR, partID, 0, 0));
+                SingletonData.CurrentFace = SingletonData.CurrentFace.updateHair(new FacePart(PartType.HAIR, partID, 0, 0));
                 break;
         }
     }

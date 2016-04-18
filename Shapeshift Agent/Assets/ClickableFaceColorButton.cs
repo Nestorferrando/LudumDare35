@@ -18,7 +18,7 @@ public class ClickableFaceColorButton : MonoBehaviour
 
     void OnMouseDown()
     {
-        SingletonData.CurrrentFace = SingletonData.CurrrentFace.updateSkinColor(color);
+        SingletonData.CurrentFace = SingletonData.CurrentFace.updateSkinColor(color);
     }
 
 

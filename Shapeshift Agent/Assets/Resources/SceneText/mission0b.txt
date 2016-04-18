@@ -1,3 +1,46 @@
 [TAG]
 ALWAYS
-mission0b
+Hannah? Is it you? Jesus, what a relief, I'm so glad you're here! One of my friends told me you've had a terrible accident! Oh Hannah, I love you so much! Please, please tell me what you always say every time I'm afraid!
+[next]
+[question]
+[Q1] I've been so worried Hannah! Please, say it!
+[Q1A] I wish I remember
+[Q1B] I really do not like your small chocolate muffins. Not at all
+[Q1C] I love you
+[Q1D] You smell like a nasty pig, motherfucker
+[endquestion]
+[TAG]
+Q1A
+No, that’s not you. C’mon, please, tell me!
+[TAG]
+Q1B
+Wh-What!? I can’t believe this, you said they smelled just like cherubs in Heaven and tasted even better! Oh Hannah, Hannah, are you making fun of me? This is something I really hate, you know. I’ve killed for less. And I am not making fun of you.
+[TAG]
+Q1C
+That’s not you Hannah. I do not recognise you.
+[TAG]
+Q1D
+Ohh Hannah, I love you so much I can’t even tell. I’m going to make those muffins you love so much! Like those cherubs in heaven you know! Ha ha ha.
+
+[TAG]
+!Q1D
+something
+[question]
+[Q2] C'mon baby, you should not treat me like this.
+[Q2A] I really cannot remember
+[Q2B] The muffins was all true
+[Q2C] I still love you
+[Q2D] You STINK
+[endquestion]
+[TAG]
+Q2A
+No, that’s not you. C’mon, please, tell me!
+[TAG]
+Q2B
+Wh-What!? I can’t believe this, you said they smelled just like cherubs in Heaven and tasted even better! Oh Hannah, Hannah, are you making fun of me? This is something I really hate, you know. I’ve killed for less. And I am not making fun of you.
+[TAG]
+Q2C
+That’s not you Hannah. I do not recognise you.
+[TAG]
+Q2D
+Ohh Hannah, I love you so much I can’t even tell. I’m going to make those muffins you love so much! Like those cherubs in heaven you know! Ha ha ha.

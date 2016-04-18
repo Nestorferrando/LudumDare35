@@ -15,7 +15,7 @@ public class ClickableHairColorButton : MonoBehaviour
 
     void OnMouseDown()
     {
-        SingletonData.CurrrentFace = SingletonData.CurrrentFace.updateHairColor(color);
+        SingletonData.CurrentFace = SingletonData.CurrentFace.updateHairColor(color);
     }
 
 

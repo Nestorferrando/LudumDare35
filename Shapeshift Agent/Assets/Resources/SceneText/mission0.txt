@@ -1,89 +1,20 @@
 [TAG]
-ALWAYS
-Hannah? Is it you? Jesus, what a relief, I'm so glad you're here! One of my friends told me you've had a terrible accident! Oh Hannah, I love you so much! Please, please tell me what you always say every time I'm afraid!
+!mission0bfail
+Welcome to The Agency. This is your first mission as a shapeshifter agent so I'll be clear about this: you are not going to recover your original face while you’re working here for us. This should not be new to you, though, so I will go right to the point.
 [next]
-[question]
-[Q1] I've been so worried Hannah! Please, say it!
-[Q1A] I wish I remember
-[Q1B] I really do not like your small chocolate muffins. Not at all
-[Q1C] I love you
-[Q1D] You smell like a nasty pig, motherfucker
-[endquestion]
-[TAG]
-Q1A
-No, that’s not you. C’mon, please, tell me!
-[TAG]
-Q1B
-Wh-What!? I can’t believe this, you said they smelled just like cherubs in Heaven and tasted even better! Oh Hannah, Hannah, are you making fun of me? This is something I really hate, you know. I’ve killed for less. And I am not making fun of you.
-[TAG]
-Q1C
-That’s not you Hannah. I do not recognise you.
-[TAG]
-Q1D
-Ohh Hannah, I love you so much I can’t even tell. I’m going to make those muffins you love so much! Like those cherubs in heaven you know! Ha ha ha.
-
-[TAG]
-!Q1D
-something
-[question]
-[Q2] C'mon baby, you should not treat me like this.
-[Q2A] I really cannot remember
-[Q2B] The muffins was all true
-[Q2C] I still love you
-[Q2D] You STINK
-[endquestion]
-[TAG]
-Q2A
-No, that’s not you. C’mon, please, tell me!
-[TAG]
-Q2B
-Wh-What!? I can’t believe this, you said they smelled just like cherubs in Heaven and tasted even better! Oh Hannah, Hannah, are you making fun of me? This is something I really hate, you know. I’ve killed for less. And I am not making fun of you.
-[TAG]
-Q2C
-That’s not you Hannah. I do not recognise you.
-[TAG]
-Q2D
-Ohh Hannah, I love you so much I can’t even tell. I’m going to make those muffins you love so much! Like those cherubs in heaven you know! Ha ha ha.
-
-
-[TAG]
-ALWAYS
-Prueba loca
+Your first mission consists in impersonating Wilson Smith's wife. He is a well known capo and all our intel points out that he is planning something big only his wife knows. 
 [next]
-[question]
-[QUESTION] esto que es?
-[SUCCESS] quiero SUCCESS
-[B] no quiero NADA
-[endquestion]
-[TAG]
-SUCCESS
-Esto lo peta, nano
-menudo exitazo
+Unfortunately, she has just had an accident. Poor, poor Wilson Smith, don’t you think? We cannot let Mr. Smith be sad. This is why we are sending you as his wife so that all those little secrets won’t be secrets anymore. What beautiful love is, isn’t it?
 [next]
-a tope de exito
-[TAG]
-FAILURE
-buabubaubauba que mal
-menudo [next] loser
-[TAG]
-ALWAYS
-p a s a t e l o  b i e n
-
-estoy muy contento y por eso canto así lalalalalalalal lalala la la lalala la la lalala
-Hola que tal,[next] 
-voy a hacerte unas preguntas:
+Now go and prepare yourself. Here you have the intel about your new you. Read it carefully and change your face according the intel. Do not forget to read about your target. A new body can give you all the trust you need easily but you also need to know how the person you are impersonating behaves.
 [next]
-[question]
-[QUESTION] te crees listo?
-[CLEVER] yes
-[SILLY] no
-[endquestion]
+Do not fail. 
+[next]
+Be perfect. 
+[next]
+You know, just be like me.
 [TAG]
-CLEVER
-así que te crees listo, eh?
-[TAG]
-SILLY
-vaya tontito estas hecho
-[TAG]
-ALWAYS
-[next] a tope de torpecito
+mission0bfail
+Welcome to The Agency. Your predecessor was a total failure and was shot dead. Well deserved in my opinion. I think she acquired her title with the cornflakes or something. Nevertheless, you’re no longer a novice and you’ve become a really good asset so I know you will succeed where she failed. 
+[next]
+Do not dare to prove me wrong.

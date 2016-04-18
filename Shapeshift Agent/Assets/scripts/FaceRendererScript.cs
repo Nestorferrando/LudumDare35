@@ -42,11 +42,11 @@ public class FaceRendererScript : MonoBehaviour
 
 
 
-        if (PreviousFace != SingletonData.CurrrentFace && shitToBeRemoved.Count==0 && shitRecentlyAdded.Count==0)
+        if (PreviousFace != SingletonData.CurrentFace && shitToBeRemoved.Count==0 && shitRecentlyAdded.Count==0)
         {
-            renderFace(PreviousFace, SingletonData.CurrrentFace);
+            renderFace(PreviousFace, SingletonData.CurrentFace);
             
-            PreviousFace = SingletonData.CurrrentFace;
+            PreviousFace = SingletonData.CurrentFace;
         }
         //------------------------------
 

@@ -1,3 +1,7 @@
 [TAG]
 ALWAYS
 MISSION 1 is about to end
+[TAG]
+mission1fail
+You've failed!
+try again!

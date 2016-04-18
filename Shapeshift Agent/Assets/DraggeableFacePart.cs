@@ -68,16 +68,16 @@ void OnMouseUp()
 
             {
                 case PartType.LEFT_EYE:
-                    SingletonData.CurrrentFace= SingletonData.CurrrentFace.updateLeftEye(new FacePart(PartType.LEFT_EYE, partID, -differenceX*scale.x, -differenceY*scale.y));
+                    SingletonData.CurrentFace= SingletonData.CurrentFace.updateLeftEye(new FacePart(PartType.LEFT_EYE, partID, -differenceX*scale.x, -differenceY*scale.y));
                     break;
                 case PartType.RIGHT_EYE:
-                    SingletonData.CurrrentFace = SingletonData.CurrrentFace.updateRightEye(new FacePart(PartType.RIGHT_EYE, partID, -differenceX * scale.x, -differenceY * scale.y));
+                    SingletonData.CurrentFace = SingletonData.CurrentFace.updateRightEye(new FacePart(PartType.RIGHT_EYE, partID, -differenceX * scale.x, -differenceY * scale.y));
                     break;
                 case PartType.MOUTH:
-                    SingletonData.CurrrentFace = SingletonData.CurrrentFace.updateMouth(new FacePart(PartType.MOUTH, partID, -differenceX * scale.x, -differenceY * scale.y));
+                    SingletonData.CurrentFace = SingletonData.CurrentFace.updateMouth(new FacePart(PartType.MOUTH, partID, -differenceX * scale.x, -differenceY * scale.y));
                     break;
                 case PartType.NOSE:
-                    SingletonData.CurrrentFace = SingletonData.CurrrentFace.updateNose(new FacePart(PartType.NOSE, partID, -differenceX * scale.x, -differenceY * scale.y));
+                    SingletonData.CurrentFace = SingletonData.CurrentFace.updateNose(new FacePart(PartType.NOSE, partID, -differenceX * scale.x, -differenceY * scale.y));
                     break;
             }  
     }
