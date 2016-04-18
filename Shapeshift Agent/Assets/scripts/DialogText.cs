@@ -12,7 +12,7 @@ public class DialogText : MonoBehaviour {
     [Range(.0001f, .1f)]
     public float wait = .005f;
     public static List<string> currentTags = new List<string>();
-
+    public static string missionFileName = "mission1";
 
     private string str;
     private AudioSource sound;
@@ -20,7 +20,6 @@ public class DialogText : MonoBehaviour {
     private Text text;
     private string lastPeak = "";
     private string missionText = "";
-    private string missionFileName = "";
     private const int max_lines = 3;
     private Question currentQuestion;
     private IEnumerator run;
@@ -40,7 +39,7 @@ public class DialogText : MonoBehaviour {
         currentQuestion.tags = new List<string>();
         currentQuestion.answers = new List<string>();
 
-        defineMissionText("mission1");
+        defineMissionText(missionFileName);
         
         dialogueCanvas = GameObject.Find("DialogueCanvas");
         buttons[0] = dialogueCanvas.transform.FindChild("Button0").GetComponent<Button>();
@@ -312,11 +311,11 @@ public class DialogText : MonoBehaviour {
         SpriteRenderer sr = GameObject.Find("black_layer").GetComponent<SpriteRenderer>();
         float a = sr.color.a;
         while (a < 1f) {
-            a += 5f * Time.deltaTime;
+            a += 0.75f * Time.deltaTime;
             sr.color = new Vector4(sr.color.r, sr.color.g, sr.color.b, a);
 
-            Camera.main.GetComponent<AudioSource>().volume -= a/2f;
-            yield return new WaitForSeconds(0.1f);
+            Camera.main.GetComponent<AudioSource>().volume -= a/4f;
+            yield return new WaitForSeconds(0.01f);
         }
         goToNextScene();    
     }

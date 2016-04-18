@@ -31,7 +31,7 @@ public class InfiltrateController : MonoBehaviour
 
     private void goToScene3()
     {
-        SceneManager.LoadScene("gameStage3");
+        SceneManager.LoadScene("gameStage1");
     }
 
 }
