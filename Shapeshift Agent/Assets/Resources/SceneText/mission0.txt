@@ -5,6 +5,4 @@ Welcome to The Agency. This is your first mission as a shapeshifter agent so I'l
 forget to read about your target. A new body can give you all the trust you need easily but you also need to know how the person you are impersonating behaves.[next]Do not fail. [next]Be perfect. [next]You know, just be like me.
 [TAG]
 mission0bfail
-Welcome. Your predecessor was a total failure and was shot dead. Well deserved in my opinion. Nevertheless, you're no longer a novice and you've become a really good asset so I know you will succeed where she failed.
-[next]
-Do not dare to prove me wrong.
+Welcome. Your predecessor was a total failure and was shot dead. Well deserved in my opinion. Nevertheless, you're no longer a novice and you've become a really good asset so I know you will succeed where she failed.[next]Do not dare to prove me wrong.

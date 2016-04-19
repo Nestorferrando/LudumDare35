@@ -1,21 +1,8 @@
 [TAG]
 !mission2bfail
 
-Your last work was superb, well done. It's a shame our intel was all wrong. Again.
-[next]We thought the killer was the husband but we were wrong. The killer was Dana herself, so we can say you've been a killer for a while. Sorry for that.
-[next]
-Now you'll have to face a sewer rat called Scott Star. He was a disgusting clown who has decided to pollute this country with all his nauseating filth.
-[next]
-You will impersonate a luxury prostitute called Jenny Star. Man, he loves her blindly, you've got an easy infiltration here. The only drawback is that we do not know the appearance of this woman, she is very careful hidding her identity. But worry no more! We have a drawing of her.
-[next]
-I think I saw her it by chance when I was having a great... A great day with my family. So then I asked our skilled painter to do a robot sketch. Here you have.
-[next]
-Good luck out there.
+Your last work was superb, well done. It's a shame our intel was all wrong. Again.[next]We thought the killer was the husband but we were wrong. The killer was Dana herself, so we can say you've been a killer for a while. Sorry for that.[next]Now you'll have to face a sewer rat called Scott Star. He was a disgusting clown who has decided to pollute this country with all his nauseating filth.[next]You will impersonate a luxury prostitute called Jenny Star. Man, he loves her blindly, you've got an easy infiltration here. The only drawback is that we do not know the appearance of this woman, she is very careful hidding her identity. But worry no more! We have a drawing of her.[next]I think I saw her it by chance when I was having a great... A great day with my family. So then I asked our skilled painter to do a robot sketch. Here you have.[next]Good luck out there.
 
 [TAG]
 mission2bfail
-Oh, you've arrived too soon. You know, this kind of things are the kind of things I don't like. They tire me. And you don't want to see me tired.
-[next]
-The photo is not good? Well, you are the professional, you should solve the issue.
-[next]
-You already know the mission details, so go there and finish your mission!
+Oh, you've arrived too soon. You know, this kind of things are the kind of things I don't like. They tire me. And you don't want to see me tired.[next]The photo is not good? Well, you are the professional, you should solve the issue.[next]You already know the mission details, so go there and finish your mission!

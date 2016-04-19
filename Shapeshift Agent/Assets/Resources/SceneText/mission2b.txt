@@ -42,7 +42,7 @@ I knew it! I knew it! I'm so glad!
 f_Q1C&!mission2bnotrust
 That's odd. It's the first time you don't check your mail looking for my great presents
 [TAG]
-s_Q1D&!mission2bnotrust
+f_Q1D&!mission2bnotrust
 When are you going to stop remembering that?
 
 [TAG]
@@ -51,6 +51,4 @@ Well, sincerely I don't mind. Come in and enjoy all the things I have for you
 
 [TAG]
 mission2bnotrust
-You... You are not my Star! No other woman will replace her, do you hear me?
-[next]NO[next]NO OTHER[next]NO OTHER WOMAN![next]
-So leave me alone! I'll wait here for my Star
+You... You are not my Star! No other woman will replace her, do you hear me?[next]NO[next]NO OTHER[next]NO OTHER WOMAN![next]So leave me alone! I'll wait here for my Star

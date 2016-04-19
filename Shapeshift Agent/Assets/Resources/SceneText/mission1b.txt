@@ -1,8 +1,6 @@
 [TAG]
 mission1bnotrust
-Who are you? I'm sorry but you have to leave, my wife has forbidden me to talk to strangers. She's a bit odd but I love her still
-[next]
-So please, leave
+Who are you? I'm sorry but you have to leave, my wife has forbidden me to talk to strangers. She's a bit odd but I love her still[next]So please, leave
 
 [TAG]
 mission1bhairfail&!mission1bnotrust
