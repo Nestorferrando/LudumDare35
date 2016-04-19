@@ -17,11 +17,28 @@ public class goToScene1Script : MonoBehaviour
 	void Update () {
 	
 	}
+    void OnMouseEnter()
+    {
+     
+            GetComponent<SpriteRenderer>().color = new Color(0.7f, 0.7f, 1, 1);
+    }
+
+    void OnMouseExit()
+    {
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+    }
+
 
     void OnMouseDown()
     {
-        if (Time.realtimeSinceStartup>3.0f)
-        SceneManager.LoadScene(targetScene);
+        if (Time.realtimeSinceStartup > 2.0f)
+        {
+            if (GetComponent<AudioSource>()!=null)
+            GetComponent<AudioSource>().Play();
+            SceneManager.LoadScene(targetScene);
+
+        }
+       
     }
 
 }
