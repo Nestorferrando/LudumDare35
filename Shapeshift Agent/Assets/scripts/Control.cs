@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using UnityEngine.SceneManagement;
 
 public static class Control {
     private static int missionIndex = 0;
@@ -17,7 +18,7 @@ public static class Control {
     public static string nextMission() {
         if (missionIndex == missions.Length-1) {
             // DRAW FINAL
-            UnityEngine.Debug.Log("IMPLEMENT FINAL SCENE");
+            SceneManager.LoadScene("ending");
         }
         //SingletonData.CurrentFace = FacesDatabase.getFaceFromLevel(missionIndex+1);
         if (missionIndex % 2 == 0) {
