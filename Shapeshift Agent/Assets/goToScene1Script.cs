@@ -9,9 +9,12 @@ public class goToScene1Script : MonoBehaviour
     public String targetScene = "gameStage1";
 
     // Use this for initialization
-    void Start () {
-	
-	}
+    void Start ()
+    {
+        Control.missionIndex = 0;
+        SingletonData.CurrentInfiltrationLevel = 0;
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
